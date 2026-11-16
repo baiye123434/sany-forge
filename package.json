@@ -10,6 +10,7 @@
     "start": "node scripts/start-desktop.cjs",
     "electron:install": "node node_modules/electron/install.js",
     "web": "node server/java-platform.cjs",
+    "demo:accounts": "node scripts/seed-demo-accounts.cjs",
     "check": "node scripts/check.cjs",
     "test": "node scripts/java-build.cjs test",
     "test:api": "node --test --test-concurrency=1 java-server/qa/business-regression.cjs && node --test --test-concurrency=1 java-server/qa/services-regression.cjs && node --test --test-concurrency=1 java-server/qa/admin-regression.cjs",
@@ -20,6 +21,7 @@
     "test:workflow": "node --test --test-concurrency=1 java-server/qa/staff-workflow-v2-regression.cjs",
     "installer:build": "node scripts/installer-build.cjs",
     "test:desktop": "node --test scripts/request-id.test.cjs scripts/desktop-contract.test.cjs",
+    "test:demo-accounts": "node --test scripts/seed-demo-accounts.test.cjs",
     "test:browser": "node scripts/review-browser.cjs",
     "test:packaged": "node scripts/verify-packaged.cjs"
   },
