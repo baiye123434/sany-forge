@@ -1,0 +1,348 @@
+/* 明日方舟 / 终末地参考重制：用黑白黄、方形模块、对位线和装备展台建立终端感。
+   本层只负责全站业务界面；开屏与登录的独立 access-terminal 由入口样式管理。 */
+:root {
+  --red: #565847;
+  --red-hover: #323329;
+  --red-soft: #ecede4;
+  --accent: #eceb3d;
+  --ink: #181b1d;
+  --muted: #5e6466;
+  --subtle: #73797a;
+  --line: #c2c6c3;
+  --soft: #e4e7e3;
+  --paper: #f6f7f2;
+  --graphite: #202527;
+  --radius: 0px;
+  --shadow: none;
+  --terminal-yellow: #eceb3d;
+  --terminal-dark: #202527;
+  --terminal-mono: "Cascadia Code", "Bahnschrift", Consolas, monospace;
+}
+body {
+  background-color: #e4e7e3;
+  background-image: linear-gradient(rgb(85 96 91 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(85 96 91 / 5%) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: #181b1d;
+}
+::selection { color: #181b1d; background: #eceb3d; }
+:focus-visible { outline: 3px solid #7c7e64; outline-offset: 4px; }
+h1, h2, h3, h4 { letter-spacing: -.025em; }
+.wrap { width: min(1440px, calc(100% - 96px)); }
+.eyebrow { color: #5b5e5c; font: 600 11px/1.7 var(--terminal-mono); letter-spacing: .18em; }
+.section-top { position: relative; padding-bottom: 24px; border-bottom: 2px solid #242b2c; }
+.section-top::after { content: ""; position: absolute; right: 0; bottom: -2px; width: 44px; height: 5px; background: #242b2c; }
+.section-top .eyebrow { display: inline-flex; align-items: center; gap: 9px; }
+.section-top .eyebrow::before { content: ""; width: 7px; height: 7px; background: #202527; }
+.section-top h1, .section-top h2 { font-weight: 800; }
+
+/* 顶栏为常驻终端目录；数字和中文分层，当前栏目使用黄底黑字以便定位。 */
+.topbar { min-height: 86px; padding-block: 0; gap: 24px; background: #202527; border-bottom: 3px solid #171b1d; box-shadow: 0 1px 0 #555e5c; }
+.brand { gap: 15px; }
+/* 黑色 SVG 保持透明背景，通过滤镜转成纯白，避免深色顶栏出现白色矩形底板。 */
+.topbar .brand img { width: 102px; height: 38px; padding: 0; object-fit: contain; background: transparent; filter: brightness(0) invert(1); }
+.brand > span { font-size: 17px; letter-spacing: .12em; border-left-color: #525d5c; }
+.brand > span > small { font: 9px/1.7 var(--terminal-mono); color: #b2beb9; letter-spacing: .15em; }
+.topbar nav { align-self: stretch; gap: 2px; align-items: stretch; }
+.topbar nav a { display: flex; flex-wrap: wrap; align-content: center; align-items: center; gap: 0 4px; min-width: 82px; min-height: 82px; padding: 14px 18px; color: #d6dcda; font-size: 13px; line-height: 1.4; border-inline: 1px solid transparent; }
+.topbar nav a > small { flex-basis: 100%; font: 10px/1.65 var(--terminal-mono); letter-spacing: .16em; color: #8e9b97; }
+.topbar nav a:hover { background: #30393a; color: #fff; }
+.topbar nav a.active, .topbar nav a[aria-current="page"] { background: #eceb3d; color: #191d1e; border-color: #eceb3d; }
+.topbar nav a.active > small, .topbar nav a[aria-current="page"] > small { color: #4d4f42; }
+.topbar nav a.active::after, .topbar nav a[aria-current="page"]::after { right: 9px; left: auto; bottom: 9px; width: 8px; height: 8px; background: #202527; }
+.topbar nav a span { color: inherit; }
+.identity { color: #cad3ce; }
+.identity > button, .identity .btn, .window-switch { border: 1px solid #6c6f6d; border-radius: 0; min-height: 40px; color: #e2e9e5; background: #2b3334; }
+.identity > button:hover, .identity .btn:hover, .window-switch:hover { border-color: #eceb3d; color: #eceb3d; background: #2d2f2e; }
+
+/* 所有主要动作统一为荧光黄；警告另有明确文字和警告色，不把装饰斜纹用作状态。 */
+.btn, .btn.small { min-height: 42px; border-radius: 0; border-color: #9ba49e; background: #f5f6f0; color: #1d2423; font-weight: 700; box-shadow: none; }
+.btn:hover { border-color: #363837; background: #e7e8e6; }
+.btn.primary { color: #181918; border-color: #cdcda9; background: #eceb3d; box-shadow: inset 0 -3px 0 rgb(23 31 25 / 10%); }
+.btn.primary:hover { color: #181918; background: #f6f6d4; border-color: #bcbd9a; }
+.btn.dark { color: #f5f7f2; background: #222a2b; border-color: #222a2b; }
+.btn.dark:hover { background: #394447; border-color: #394447; }
+.btn.link { color: #3a3c3a; background: transparent; border-color: transparent; }
+.btn.link:hover { color: #171a18; background: #e6e7e3; }
+.btn.danger { background: #f9e7e4; border-color: #d5aaa3; color: #9c352a; }
+.pill { border-radius: 0; background: #dde3dc; color: #4f5250; letter-spacing: .02em; }
+.pill.red { background: #e8e8dd; color: #47493d; }
+.pill.green { background: #e7eae7; color: #48554d; }
+.pill.blue { background: #e3ebef; color: #33586c; }
+.pill.orange { background: #f4e7c5; color: #78520b; }
+
+/* 首屏左右两块形成「任务说明 + 装备观测」；画布编号和坐标线为纯装饰，不遮挡点击。 */
+.hero.equipment-hero { grid-template-columns: minmax(0, .86fr) minmax(0, 1.32fr); gap: 38px; padding-block: 46px 30px; align-items: center; }
+.hero-copy { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; padding: 24px 0 16px; }
+.hero-copy::before { content: "01"; position: absolute; right: 0; top: 16px; z-index: -1; color: rgb(39 52 43 / 6%); font: 800 clamp(150px, 15vw, 210px)/1 "Bahnschrift", sans-serif; letter-spacing: -.09em; }
+.hero-copy .eyebrow { margin-bottom: 25px; color: #3e4240; font-size: 10px; letter-spacing: .17em; }
+.hero-copy .eyebrow::before { width: 8px; height: 8px; background: #2a2b2b; }
+.equipment-hero h1 { font-size: clamp(38px, 3.75vw, 58px); line-height: 1.18; font-weight: 850; letter-spacing: -.055em; }
+.equipment-hero h1 em { color: #5e605f; font-style: normal; }
+.equipment-hero .lead { margin-top: 25px; font-size: 15px; color: #555756; line-height: 1.9; }
+.equipment-hero .hero-actions { gap: 10px; margin-top: 28px; }
+.equipment-hero .hero-actions .btn { min-height: 49px; padding-inline: 18px; font-size: 13px; }
+.hero-index { border-top: 1px solid #b2b4b2; margin-top: 35px; padding-top: 16px; color: #575b58; font: 10px/1.7 var(--terminal-mono); letter-spacing: .12em; }
+.hero-index span:first-child { color: #1a1c1a; font-weight: 700; }
+.hero-art.hero-carousel { position: relative; padding: 23px; min-height: 0; border-radius: 0; color: #e2ebe5; background: #252c2d; border: 1px solid #1b2425; box-shadow: 9px 9px 0 #cbccc9; overflow: visible; }
+.hero-art.hero-carousel::before, .hero-art.hero-carousel::after { width: 15px; height: 15px; border-color: #eceb3d; z-index: 3; }
+.hero-art.hero-carousel::before { top: -1px; left: -1px; border-width: 3px 0 0 3px; }
+.hero-art.hero-carousel::after { bottom: -1px; right: -1px; border-width: 0 3px 3px 0; }
+.ark-stage-label { display: flex; justify-content: space-between; align-items: center; gap: 16px; width: 100%; color: #c0c3c1; font: 9px/1.6 var(--terminal-mono); letter-spacing: .18em; padding-bottom: 15px; border-bottom: 1px solid #5a5d5b; margin-bottom: 16px; }
+.ark-stage-label b, .ark-stage-label strong { color: #eceb3d; font-weight: 600; }
+.hero-slide { position: relative; }
+.hero-slide-top { padding-bottom: 13px; }
+.hero-slide-top .pill, .hero-slide-top .pill.red { color: #eceb3d; border: 1px solid #66695f; background: #363936; padding: 4px 8px; font-size: 10px; }
+.hero-slide-count { color: #e3e4e1; font: 13px/1.5 var(--terminal-mono); }
+.hero-slide-image { height: 270px; padding: 22px 30px; margin: 0 0 17px; background-color: #e3e7df; background-image: url("./assets/brand/engineering-grid.svg"); background-size: cover; border: 0; border-radius: 0; object-fit: contain; }
+/* 官网设备图自带白底。把网格放到独立画布，再用正片叠底融合白底，
+   设备的暗部与黄色机身保持可见；不在深色展台上直接混合图像，避免机身变黑。 */
+.hero-equipment-canvas { position: relative; isolation: isolate; margin: 0 0 17px; background: #e3e7df url("./assets/brand/engineering-grid.svg") center / cover; border: 1px solid #a6aea5; }
+.hero-equipment-canvas .hero-slide-image { position: relative; width: 100%; margin: 0; background: transparent; mix-blend-mode: multiply; }
+.hero-equipment-canvas::before, .hero-equipment-canvas::after { content: ""; position: absolute; z-index: 2; pointer-events: none; width: 24px; height: 24px; border-style: solid; border-color: #59615b; }
+.hero-equipment-canvas::before { top: 9px; left: 9px; border-width: 1px 0 0 1px; }
+.hero-equipment-canvas::after { right: 9px; bottom: 9px; border-width: 0 1px 1px 0; }
+.hero-slide-info { align-items: flex-end; min-height: 85px; flex-direction: row; gap: 14px; }
+.hero-slide-info small { color: #b1b5b2; font-size: 11px; }
+.hero-slide-info h2 { color: #f3f5ed; font: 750 clamp(27px, 2.7vw, 40px)/1.2 "Bahnschrift", "Segoe UI", sans-serif; letter-spacing: .025em; }
+.hero-slide-info p { color: #cdd7cf; font-size: 12px; margin-top: 4px; }
+.hero-slide-info > .btn { background: #eceb3d; color: #1f201e; border-color: #eceb3d; min-height: 44px; white-space: nowrap; }
+.hero-slide-info > .btn:hover { color: #181918; background: #f6f6d4; border-color: #f6f6d4; }
+.hero-controls { gap: 5px; margin-top: 20px; border-top: 1px solid #555756; padding-top: 12px; }
+.hero-controls .hero-arrow { border-radius: 0; color: #dee0de; border-color: #6a6d6a; background: transparent; }
+.hero-controls .hero-arrow:hover { background: #eceb3d; color: #1f201e; border-color: #eceb3d; }
+.hero-dot { border-radius: 0; }
+.hero-dot::after { width: 15px; height: 3px; background: #727472; }
+.hero-dot[aria-current="true"]::after { width: 25px; height: 4px; background: #eceb3d; }
+.hero-dot:hover::after { background: #e8e9e2; }
+#heroPause { color: #cccfcc; background: transparent; border-color: #696d69; border-radius: 0; }
+.hero-carousel .art-label { color: #a9aca9; font-size: 10px; border-top-color: #5a5d59; }
+.hero-carousel .art-label strong, .hero-carousel .art-label b { color: #d9dbd8; font: 11px/1.7 var(--terminal-mono); }
+
+/* 三块任务入口做成终端任务带，保持整个入口可点与完整中文说明。 */
+.service-shortcuts { gap: 12px; border: 0; background: transparent; margin-top: 12px; margin-bottom: 52px; }
+.service-shortcut { position: relative; min-height: 112px; padding: 22px; gap: 17px; color: #eef2e9; background: #2b3333; border: 0; border-top: 3px solid #6a6c69; }
+.service-shortcut:hover { color: #fff; background: #3f413f; border-top-color: #eceb3d; }
+.service-shortcut > b { color: #c6c8c4; font: 600 30px/1.15 "Bahnschrift", "Segoe UI", sans-serif; letter-spacing: -.05em; align-self: center; margin: 0; }
+.service-shortcut strong { color: #f3f5ed; font-size: 16px; letter-spacing: .02em; }
+.service-shortcut div > span { color: #bec0bd; font-size: 11px; margin-top: 7px; }
+.service-shortcut > span:last-child { color: #eceb3d; font: 600 28px/1 "Segoe UI", sans-serif; }
+.service-shortcut::after { content: ""; position: absolute; right: 10px; bottom: 10px; width: 7px; height: 7px; border-right: 1px solid #7d807b; border-bottom: 1px solid #7d807b; pointer-events: none; }
+
+/* 目录和卡片按装备库呈现，选中角框只作叠层，卡片不裁剪以保留焦点环。 */
+.catalog-layout { grid-template-columns: 200px minmax(0, 1fr); gap: 26px; }
+.catalog-sidebar { padding: 20px 0 0; border-top: 4px solid #2a2c2b; }
+.filter-heading { letter-spacing: .03em; margin-bottom: 20px; }
+.catalog-sidebar .category-chips { gap: 6px; counter-reset: equipment-group; }
+.catalog-sidebar .category-chip { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 11px 12px; border: 1px solid #bec0bd; background: rgb(248 249 242 / 65%); color: #4d504d; }
+.catalog-sidebar .category-chip::before { counter-increment: equipment-group; content: counter(equipment-group, decimal-leading-zero); color: #838682; font: 10px/1.5 var(--terminal-mono); }
+.catalog-sidebar .category-chip > span { flex: 1; text-align: left; }
+.catalog-sidebar .category-chip > b { color: #6d716c; font: 11px/1.5 var(--terminal-mono); }
+.catalog-sidebar .category-chip:hover { background: #f5f6f3; border-color: #747871; }
+.catalog-sidebar .category-chip[aria-pressed="true"] { color: #212321; background: #eceb3d; border-color: #4f5249; }
+.catalog-sidebar .category-chip[aria-pressed="true"]::before, .catalog-sidebar .category-chip[aria-pressed="true"] > b { color: #505349; }
+.catalog-sidebar .category-chip[aria-pressed="true"]::after { content: ""; position: absolute; inset: -3px; pointer-events: none; background: linear-gradient(#2d2f2a, #2d2f2a) left top/8px 2px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) left top/2px 8px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) right top/8px 2px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) right top/2px 8px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) left bottom/8px 2px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) left bottom/2px 8px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) right bottom/8px 2px no-repeat, linear-gradient(#2d2f2a, #2d2f2a) right bottom/2px 8px no-repeat; }
+.sidebar-note { color: #6b6e6a; border-top-color: #b0b3ae; font-size: 11px; }
+.catalog-results .catalog-tools { border: 0; border-top: 3px solid #393b39; border-radius: 0; background: #d2d3d1; padding: 16px; }
+.catalog-tools input, .catalog-tools select { background: #f2f3f0; border-color: #b1b4af; border-radius: 0; }
+.catalog-meta { color: #626561; }
+.catalog-results .grid { gap: 18px; }
+.product-card { position: relative; overflow: visible; border-radius: 0; border: 1px solid #b2b4b0; border-top: 3px solid #363835; background: #f5f5f3; box-shadow: none; }
+.product-card::after { content: ""; position: absolute; right: -1px; bottom: -1px; width: 12px; height: 12px; background: linear-gradient(135deg, transparent 46%, #b2b4b0 47%, #b2b4b0 52%, #e4e7e3 53%); pointer-events: none; }
+.product-card:hover, .product-card:focus-within { border-color: #565b53; box-shadow: 0 0 0 2px #82857a; transform: translateY(-2px); }
+.product-image { height: 218px; padding: 32px 18px 16px; background-color: #e7e8e5; background-image: url("./assets/brand/engineering-grid.svg"); background-size: cover; border-bottom: 1px solid #c1c3bf; }
+.product-image img { mix-blend-mode: multiply; }
+.product-image .pill { top: 10px; left: 10px; border: 0; color: #e7e9e5; background: #3a3d39; font-size: 10px; }
+.product-image .pill.red { color: #282a26; background: #eceb3d; }
+.product-info { padding: 20px; }
+.product-info .category { color: #666b64; font: 10px/1.6 var(--terminal-mono); letter-spacing: .025em; }
+.product-info h3 { color: #252724; font: 700 26px/1.25 "Bahnschrift", "Segoe UI", sans-serif; letter-spacing: -.02em; }
+.product-info > p { color: #61655f; font-size: 13px; }
+.mini-specs { border-color: #cbcdc9; margin-block: 17px; }
+.mini-specs span, .mini-specs dt { color: #6e716c; font-size: 11px; }
+.mini-specs b, .mini-specs strong, .mini-specs dd { color: #2e312c; font-family: "Bahnschrift", "Segoe UI", "Microsoft YaHei", sans-serif; font-variant-numeric: tabular-nums; }
+.reference-price strong { color: #545851; }
+.product-info .actions .btn { color: #eff0ed; border-color: #333632; background: #333632; border-radius: 0; }
+.product-info .actions .btn:hover { background: #4d514b; border-color: #4d514b; }
+.product-info .actions .btn.link { color: #2f332d; background: #e8e9e4; border-color: #bcbfb7; }
+.product-info .actions .btn.link:hover { background: #eceb3d; border-color: #a5a790; }
+.catalog-source { color: #6d706b; }
+.pagination > span { font: 13px/1.7 var(--terminal-mono); }
+
+/* 管理和客户工作区共用终端导航，数字是定位信息，状态仍同时保留中文。 */
+.workspace { grid-template-columns: 218px minmax(0, 1fr); gap: 28px; }
+.workspace .sidebar { border-radius: 0; background: #252d2c; color: #e8ede4; padding: 22px 12px; border-top: 4px solid #eceb3d; counter-reset: terminal-module; }
+.sidebar > .eyebrow { color: #c9ccc6; letter-spacing: .18em; border-bottom: 1px solid #565955; margin-bottom: 10px; }
+.sidebar button, .sidebar a { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 11px 12px; color: #cfd2cd; border-left: 0; border-radius: 0; }
+.sidebar button::before, .sidebar a::before { counter-increment: terminal-module; content: counter(terminal-module, decimal-leading-zero); font: 10px/1.5 var(--terminal-mono); color: #9ca398; }
+.sidebar button:hover, .sidebar a:hover { background: #3c3f3b; color: #fff; }
+.sidebar button.active, .sidebar a.active, .sidebar [aria-current="page"], .sidebar [aria-selected="true"] { color: #20231f; background: #eceb3d; border-left: 0; box-shadow: inset 4px 0 0 #f8f9e5; }
+.sidebar button.active::before, .sidebar a.active::before { color: #595c50; }
+.sidebar .side-note { color: #b6bab3; border-color: #5e625c; }
+.work-content .section-top h1 { font-size: 34px; }
+.stat { border-radius: 0; position: relative; border-color: #b5b8b2; border-top: 3px solid #373a36; background: #f2f3f0; }
+.stat strong, .stat b { color: #2c302b; font: 600 39px/1.25 "Bahnschrift", "Segoe UI", sans-serif; }
+.stat::after { content: ""; position: absolute; right: 13px; bottom: 13px; height: 5px; width: 5px; background: #868a82; }
+.panel { position: relative; background: #f4f5f3; border: 1px solid #bfc2bd; border-top: 3px solid #3b3e3a; border-radius: 0; }
+.panel > h2, .panel > h3 { color: #333732; }
+.record { border-radius: 0; background: #f5f7ef; border-color: #c6c8c3; }
+.empty { border-radius: 0; background: #ebece8; border-color: #b0b4ad; }
+.tabs { padding: 4px; background: #d4d6d2; border-color: #b0b3ad; border-radius: 0; }
+.tabs button, .tabs a { border-radius: 0; min-height: 42px; }
+.tabs .active, .tabs [aria-selected="true"] { color: #252722; background: #eceb3d; box-shadow: inset 0 -2px 0 #56594c; }
+.table-wrap { border-radius: 0; border-color: #b5b9b2; background: #f5f6f4; }
+th { background: #2e312f; color: #e2e4e0; border-bottom: 2px solid #abaea7; font-size: 12px; letter-spacing: .03em; }
+td { border-bottom-color: #d0d2ce; color: #373b36; }
+tbody tr:hover { background: #eaece6; }
+.notice { border-radius: 0; border: 0; border-left: 3px solid #7a7f76; background: #eaebe8; color: #595e56; }
+.notice.warn { background: #f3ebd0; border-color: #9d7b2e; color: #785513; }
+.notice.red { background: #f5e4df; border-color: #b46150; color: #963f30; }
+.action-box { background: #eeeee8; border-color: #bcbeb5; border-radius: 0; }
+.work-note { background: #e1e3df; color: #595e57; border-color: #989c95; border-radius: 0; }
+input:not([type="checkbox"]):not([type="radio"]), textarea, select { border-radius: 0; border-color: #b4b6b0; background: #f9fbf3; min-height: 46px; color: #2f332d; }
+input:not([type="checkbox"]):not([type="radio"]):focus, textarea:focus, select:focus { border-color: #737665; outline: 2px solid #aaac94; outline-offset: 2px; box-shadow: none; }
+input::placeholder, textarea::placeholder { color: #7f827c; }
+input[type="checkbox"], input[type="radio"] { accent-color: #616555; }
+.field > label span { color: #595d51; }
+.progress .done { color: #595f52; }
+.progress .done::before, .progress .done::after { background: #999f88; }
+.timeline > :first-child::before { background: #868c76; }
+.steps b { color: #5c6153; }
+.model-toolbar .active, .model-toolbar [aria-pressed="true"] { color: #32372e; border-color: #a0a390; background: #ecede2; }
+
+/* 弹窗、会话和业务表单采用同一纸面刻度；深色标题与高对比正文分区。 */
+dialog { border-radius: 0; background: #f5f6f4; border: 1px solid #8c908a; box-shadow: 0 20px 100px rgb(12 26 12 / 35%); }
+dialog::backdrop { background: rgb(10 20 12 / 72%); backdrop-filter: blur(9px); }
+.dialog-head { background: #2d302f; border-bottom: 3px solid #d3d3b3; color: #f3f4f1; }
+.dialog-head h2 { color: #f3f4f1; }
+.close { color: #e7e9e4; background: transparent; border: 1px solid #7c807a; border-radius: 0; }
+.close:hover { background: #eceb3d; color: #2b2f28; }
+.detail-image { border-radius: 0; border-color: #c5c8c2; }
+.spec-grid { border-radius: 0; background: #bfc3bc; border-color: #bfc3bc; }
+.spec-grid > * { background: #f0f1ee; }
+.reference-price.detailed { background: #e9eae6; border-radius: 0; }
+.reference-price.detailed strong { color: #595f53; }
+.project-confidential, .project-picker, .project-picker-results, .project-item-summary, .project-service-callout, .project-fallback, .project-inbox-row, .project-file-icon, .project-messages, .project-business-card { border-radius: 0; border-color: #bbbeb7; }
+.project-confidential:has(input:checked), .project-pick-row:has(input:checked) { background: #edede5; border-color: #abad99; }
+.project-pick-row:hover { background: #ebece8; }
+.project-service-callout { background: #e9ebe6; }
+.project-inbox-row { background: #f6f7f4; }
+.project-inbox-row:hover { border-color: #82887d; }
+.project-messages { background: #e4e6e1; }
+.project-message-bubble { background: #f8f9f6; border-color: #c6c9c2; border-radius: 0; }
+.project-message.mine .project-message-bubble { background: #edede4; border-color: #bec0b4; border-radius: 0; }
+.project-business-card { background: #f7f7f4; }
+.project-file-icon { background: #e2e4de; color: #565c52; }
+.project-steps b { background: #ebece3; border-color: #bcbeb4; color: #595c53; border-radius: 0; }
+.file-link { color: #4e5449; border-color: #b6bab1; background: #eff0ed; border-radius: 0; }
+.footer { color: #c0c4be; background: #282a29; border-top: 4px solid #acafa2; }
+.footer > div span { color: #dbddd8; }
+.footer a, #replayBoot { color: #cfd2cd; border-radius: 0; }
+.footer a:hover, #replayBoot:hover { color: #eceb3d; }
+#toast, .toast { border-radius: 0; background: #253922f2; border-color: #c4c9ae; }
+
+/* 平板和手机保留相同的视觉模块，不依赖缩小字号塞入桌面布局。 */
+@media (min-width: 1650px) {
+  .hero-slide-image { height: 315px; }
+  .hero.equipment-hero { padding-block: 60px 35px; }
+}
+@media (max-width: 1200px) {
+  .topbar { gap: 16px; }
+  .topbar nav { gap: 0; }
+  .topbar nav a { padding-inline: 12px; min-width: 73px; }
+  .wrap, .hero.equipment-hero { width: calc(100% - 64px); }
+  .hero.equipment-hero { gap: 28px; grid-template-columns: minmax(0, .9fr) minmax(0, 1.15fr); }
+  .equipment-hero h1 { font-size: 43px; }
+  .hero-slide-image { height: 260px; padding-inline: 20px; }
+  .hero-slide-info h2 { font-size: 30px; }
+  .service-shortcut { padding: 20px 18px; gap: 12px; }
+  .service-shortcut > b { font-size: 24px; }
+  .service-shortcut strong { font-size: 14px; }
+  .catalog-results .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 950px) {
+  .topbar { padding-inline: 24px; }
+  .topbar nav a { padding-inline: 11px; min-width: 64px; font-size: 12px; }
+  .hero.equipment-hero { gap: 24px; }
+  .hero-copy .eyebrow { font-size: 9px; }
+  .equipment-hero h1 { font-size: 35px; }
+  .equipment-hero .lead { font-size: 13px; }
+  .hero-art.hero-carousel { padding: 17px; box-shadow: 6px 6px 0 #cbccc9; }
+  .hero-slide-image { height: 230px; }
+  .hero-slide-info { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero-slide-info > .btn { width: 100%; }
+  .ark-stage-label { font-size: 8px; letter-spacing: .1em; }
+  .catalog-layout { grid-template-columns: minmax(0, 1fr); }
+  .catalog-sidebar .category-chips { flex-direction: row; gap: 10px; padding: 4px 3px 12px; }
+  .catalog-sidebar .category-chip { flex: 0 0 auto; width: auto; min-width: 142px; }
+  .workspace { grid-template-columns: 180px minmax(0, 1fr); gap: 20px; }
+  .sidebar button, .sidebar a { padding-inline: 9px; font-size: 13px; }
+}
+@media (max-width: 740px) {
+  .topbar { min-height: 0; padding: 10px 20px 0; row-gap: 8px; }
+  .topbar nav { min-height: 56px; gap: 4px; justify-content: flex-start; overflow-x: auto; }
+  .topbar nav a { flex: 1 0 auto; min-height: 56px; padding: 8px 12px; font-size: 12px; min-width: 68px; }
+  .topbar nav a > small { font-size: 8px; line-height: 1.4; }
+  .topbar nav a.active::after, .topbar nav a[aria-current="page"]::after { width: 5px; height: 5px; right: 5px; bottom: 5px; }
+  .wrap, .hero.equipment-hero, .workspace { width: calc(100% - 40px); }
+  .hero.equipment-hero { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 27px; }
+  .hero-copy { padding: 0; }
+  .hero-copy::before { top: 0; right: 4px; font-size: 170px; }
+  .hero-copy .eyebrow { margin-bottom: 19px; font-size: 10px; }
+  .equipment-hero h1 { font-size: clamp(36px, 7.5vw, 48px); }
+  .equipment-hero .lead { font-size: 14px; margin-top: 18px; }
+  .equipment-hero .hero-actions { margin-top: 21px; }
+  .hero-index { margin-top: 22px; padding-top: 12px; }
+  .hero-slide-image { height: 260px; }
+  .hero-slide-info { flex-direction: row; align-items: flex-end; }
+  .hero-slide-info > .btn { width: auto; }
+  .ark-stage-label { font-size: 9px; }
+  .service-shortcuts { grid-template-columns: minmax(0, 1fr); gap: 9px; margin-top: 6px; margin-bottom: 38px; }
+  .service-shortcut { min-height: 88px; padding: 18px 22px; border-bottom: 0; }
+  .service-shortcut > b { font-size: 29px; min-width: 35px; }
+  .service-shortcut strong { font-size: 16px; }
+  .service-shortcut div > span { font-size: 11px; }
+  .section-top { padding-bottom: 19px; }
+  .catalog-results .catalog-tools { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 12px; }
+  .catalog-tools #catalogSearch { grid-column: 1 / -1; }
+  .catalog-tools #categoryFilter { grid-column: auto; }
+  .product-image { height: 200px; }
+  .product-info { padding: 18px; }
+  .product-info h3 { font-size: 25px; }
+  .workspace { display: block; }
+  .workspace .sidebar { padding: 8px; border-top-width: 3px; }
+  .sidebar button, .sidebar a { min-height: 44px; padding: 10px 12px; }
+  .stat { border-radius: 0; }
+  .panel, .table-wrap, dialog { border-radius: 0; }
+  .table-wrap::before { color: #62665e; background: #eaebe7; }
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .topbar { padding-inline: 16px; }
+  .topbar nav { gap: 0; }
+  .topbar nav a { min-width: 68px; padding-inline: 9px; flex: 1 0 auto; }
+  .wrap, .hero.equipment-hero, .workspace { width: calc(100% - 32px); }
+  .equipment-hero h1 { font-size: 37px; }
+  .equipment-hero .hero-actions .btn { padding-inline: 14px; }
+  .hero-art.hero-carousel { padding: 16px; }
+  .hero-slide-image { height: 215px; padding: 18px 12px; }
+  .hero-slide-info h2 { font-size: 29px; }
+  .hero-slide-info > .btn { padding-inline: 11px; font-size: 11px; }
+  .hero-slide-info small { font-size: 10px; }
+  .hero-slide-info p { font-size: 11px; }
+  .ark-stage-label { font-size: 8px; letter-spacing: .08em; }
+  .catalog-results .grid { grid-template-columns: minmax(0, 1fr); }
+  .product-image { height: 250px; padding: 35px 24px 18px; }
+  .product-info { padding: 23px; }
+  .product-info h3 { font-size: 29px; }
+  .catalog-tools select { font-size: 13px; }
+  .section-top h2 { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-card:hover, .product-card:focus-within { transform: none; }
+}
+@media print {
+  body { background: white; }
+  .hero-art.hero-carousel, .service-shortcut { color: black; background: white; box-shadow: none; }
+  .hero-slide-info h2, .hero-slide-info p, .hero-slide-info small, th { color: black; }
+  th { background: #eee; }
+}

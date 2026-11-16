@@ -1,0 +1,205 @@
+/* 视频式访问终端：六幕围绕同一个中央舞台展开。
+   纸白开屏与深色业务界面分开设色，确保登录时仍能保持视频中的大留白和单色标识。 */
+body.access-mode {
+  --access-paper: #e8e7e3;
+  --access-ink: #141513;
+  --access-muted: #6e6f68;
+  --access-accent: #c4663f;
+  color: var(--access-ink);
+  background: var(--access-paper);
+  color-scheme: light;
+}
+body.access-mode > .topbar,
+body.access-mode > .footer { display: none; }
+body.access-mode #main { margin: 0; padding: 0; min-height: 100svh; width: 100%; max-width: none; }
+body.access-mode .skip-link { background: var(--access-ink); color: var(--access-paper); }
+body.access-mode ::selection { color: var(--access-paper); background: var(--access-ink); }
+
+.access-terminal {
+  position: relative; isolation: isolate; display: flex; flex-direction: column;
+  min-height: 100vh; min-height: 100svh; width: 100%;
+  padding: clamp(24px, 4vh, 44px) 5.5% 26px;
+  color: var(--access-ink); background: var(--access-paper);
+  font-family: "HarmonyOS Sans SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+/* 两条极淡的基准线标定画布边界；不用照片、花纹或亮色抢占中央信息。 */
+.access-terminal::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: 18px 4% 18px; border-inline: 1px solid rgb(20 21 19 / 5%);
+}
+.access-terminal button, .access-terminal a { touch-action: manipulation; }
+.access-terminal :focus-visible { outline: 2px solid var(--access-accent); outline-offset: 5px; }
+.access-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-shrink: 0; }
+.access-header-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+.access-header-actions .window-switch { display: inline-flex; align-items: center; min-height: 40px; color: var(--access-ink); background: transparent; border-color: rgb(20 21 19 / 30%); }
+.access-header-actions .window-switch:hover { background: var(--access-ink); color: var(--access-paper); border-color: var(--access-ink); }
+.access-brand { display: grid; grid-template-columns: 38px auto; column-gap: 11px; align-items: center; color: var(--access-ink); }
+.access-brand img { width: 38px; height: 38px; object-fit: contain; filter: grayscale(1) brightness(.15); }
+.access-brand span { font-size: 22px; font-weight: 900; line-height: 1.2; letter-spacing: .15em; }
+.access-brand small { display: block; margin-top: 7px; color: var(--access-muted); font: 9px/1.6 "Cascadia Code", Consolas, monospace; letter-spacing: .18em; }
+.access-brand > small { grid-column: 2; margin-top: 3px; }
+.access-skip {
+  min-height: 44px; padding: 8px 0 8px 14px; border: 0; border-bottom: 1px solid rgb(20 21 19 / 30%);
+  color: var(--access-muted); background: transparent; border-radius: 0;
+  font: 10px/1.6 "Cascadia Code", Consolas, monospace; letter-spacing: .18em;
+}
+.access-skip:hover { color: var(--access-ink); border-bottom-color: var(--access-ink); }
+.access-stage { position: relative; display: grid; place-items: center; flex: 1; min-height: 450px; padding: 56px 0 64px; }
+.access-content {
+  position: relative; z-index: 2; width: min(100%, 560px); text-align: center;
+}
+/* 中央内容的退场与入场由同一个可取消的 WAAPI 序列管理；不再给每个子元素重复叠加动画。 */
+.access-content [hidden] { display: none !important; }
+.access-content h1 { color: var(--access-ink); font-size: clamp(27px, 2.6vw, 38px); font-weight: 800; line-height: 1.6; letter-spacing: .25em; text-wrap: balance; }
+.access-subtitle, .access-form-heading > small {
+  display: block; margin: 8px 0 0; color: var(--access-muted);
+  font: 10px/1.8 "Cascadia Code", Consolas, monospace; letter-spacing: .35em; text-transform: uppercase;
+}
+.access-description { max-width: 350px; margin: 25px auto 0; color: #64655f; font-size: 12px; line-height: 2; letter-spacing: .06em; }
+.access-emblem { width: 68px; height: 68px; margin: 0 auto 24px; object-fit: contain; filter: grayscale(1) brightness(.15); }
+.access-primary, .access-content .btn.primary, .access-content button[type="submit"] {
+  display: inline-flex; justify-content: center; align-items: center; gap: 12px;
+  min-height: 46px; max-width: 100%; margin-top: 30px; padding: 13px 26px;
+  color: var(--access-ink); background: transparent; border: 1px solid var(--access-ink);
+  border-radius: 0; box-shadow: none; font-size: 12px; line-height: 1.6; font-weight: 600; letter-spacing: .12em;
+  transition: color 180ms, background 180ms;
+}
+.access-primary:hover, .access-content .btn.primary:hover, .access-content button[type="submit"]:hover {
+  color: var(--access-paper); background: var(--access-ink); transform: none;
+}
+.access-primary small { font: 9px/1.6 "Cascadia Code", Consolas, monospace; letter-spacing: .15em; }
+.access-primary:disabled, .access-content button[type="submit"]:disabled { cursor: wait; opacity: .55; }
+
+/* 核验幕只呈现正在组装的徽标；SVG 画布保留径向插入空间，负外边距收紧静态留白。
+   标题和许可说明始终在真实图形下方，不以纸色遮罩覆盖圆环或三个“一”。 */
+.access-assembly { width: min(84vw, 56vh, 500px); aspect-ratio: 1; margin: -44px auto -44px; }
+.access-assembly > .access-emblem { display: block; width: 58%; height: 58%; margin: 21%; }
+.access-terminal[data-stage="verify"] .access-stage { padding-top: 38px; padding-bottom: 46px; }
+.access-terminal[data-stage="verify"] .access-content h1 { margin: 2px 0 0; font-size: 28px; line-height: 1.5; }
+.access-terminal[data-stage="verify"] .access-subtitle { margin-top: 0; }
+.access-terminal[data-stage="verify"] .access-description { margin-top: 6px; }
+
+.access-readout {
+  position: absolute; z-index: 2; top: 50%; right: 0; width: min(18%, 200px);
+  transform: translateY(-50%); color: var(--access-muted); text-align: left;
+  font: 9px/1.9 "Cascadia Code", Consolas, monospace; letter-spacing: .1em;
+}
+.access-readout > span { display: block; padding-bottom: 12px; border-bottom: 1px solid rgb(20 21 19 / 15%); font-size: 9px; letter-spacing: .15em; }
+.access-readout dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: baseline; gap: 9px 10px; margin: 12px 0 0; }
+.access-readout dl > div { display: contents; }
+.access-readout dt { color: #777971; font-weight: 400; }
+.access-readout dd { margin: 0; color: #44463f; text-align: right; overflow-wrap: anywhere; }
+.access-terminal[data-stage="authorization"] .access-readout { opacity: .8; }
+.access-terminal[data-stage="welcome"] .access-content h1 { font-size: clamp(26px, 3vw, 38px); letter-spacing: .19em; }
+.access-welcome-band { display: inline-block; max-width: 100%; margin: 3px 0 23px; padding: 6px 18px 8px; color: var(--access-paper); background: var(--access-ink); font: 800 clamp(26px, 3vw, 38px)/1.3 "Microsoft YaHei", "Segoe UI", sans-serif; letter-spacing: .13em; }
+.access-terminal[data-stage="welcome"] .access-emblem { width: 70px; height: 70px; margin-bottom: 20px; }
+.access-person { margin-top: 14px; color: var(--access-ink); font-size: 13px; line-height: 2; letter-spacing: .18em; overflow-wrap: anywhere; }
+.access-person strong { display: block; max-width: 100%; overflow-wrap: anywhere; }
+.access-person small, .access-person span { display: block; color: var(--access-muted); font-size: 10px; letter-spacing: .12em; }
+.access-dots { display: flex; justify-content: center; gap: 10px; margin: 24px 0 0; }
+.access-dots i { width: 4px; height: 4px; border-radius: 50%; background: #b2b3ab; }
+.access-dots i.active, .access-dots i.complete { background: var(--access-ink); }
+
+/* 表单始终在舞台中央；登录与注册共用真实字段，长注册幕由页面自然增高。
+   输入框仅保留底边，避免普通网站的白色卡片破坏仪表式空间。 */
+.access-terminal[data-stage="identity"] .access-stage { padding-block: 44px; }
+.access-terminal[data-stage="identity"] .access-content { width: min(100%, 400px); }
+.access-form-shell { width: 100%; text-align: left; background: transparent; }
+.access-form-heading { margin-bottom: 28px; text-align: center; }
+.access-form-heading h1 { font-size: 32px; }
+.access-content .auth-tabs { display: flex; margin-bottom: 24px; gap: 0; border-bottom: 1px solid rgb(20 21 19 / 20%); }
+.access-content .auth-tabs button { min-height: 44px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; color: #6e6f68; background: transparent; font-size: 12px; letter-spacing: .15em; box-shadow: none; }
+.access-content .auth-tabs button.active { border-bottom-color: var(--access-ink); color: var(--access-ink); background: transparent; }
+.access-content .auth-tabs button:hover { color: var(--access-ink); background: rgb(255 255 255 / 22%); }
+.access-content form { gap: 18px; }
+.access-content .form-grid { grid-template-columns: 1fr; gap: 18px; }
+.access-content .field { gap: 5px; }
+.access-content .field > label, .access-content label.field { color: #5a5b55; font-size: 12px; font-weight: 500; letter-spacing: .12em; }
+.access-content .field input:not([type="checkbox"]):not([type="radio"]), .access-content .field select {
+  min-height: 46px; padding: 9px 2px; border: 0; border-bottom: 1px solid #a2a39b;
+  border-radius: 0; color: var(--access-ink); background: transparent; box-shadow: none; font-size: 14px;
+}
+.access-content .field select { padding-right: 24px; }
+.access-content .field select option { color: var(--access-ink); background: var(--access-paper); }
+.access-content .field input:focus, .access-content .field select:focus { outline: 2px solid var(--access-accent); outline-offset: 3px; border-bottom-color: var(--access-ink); box-shadow: none; }
+.access-content input::placeholder { color: #777971; font-size: 12px; letter-spacing: .02em; }
+.access-content form button[type="submit"] { width: 100%; margin-top: 6px; }
+.access-content .privacy-note, .access-content .notice { margin-top: 18px; padding: 0; border: 0; color: #66675f; background: transparent; font-size: 12px; line-height: 1.9; text-align: left; }
+.access-content .privacy-note { font-size: 11px; }
+.access-content .form-error { color: #8b3924; font-size: 12px; letter-spacing: .02em; }
+.access-content .form-error:not(:empty) { border-left: 2px solid var(--access-accent); padding-left: 10px; }
+.access-terminal[data-stage="error"] .access-description { color: #8b3924; }
+
+.access-footer { display: grid; grid-template-columns: 1fr minmax(250px, 42%) 1fr; align-items: end; gap: 30px; flex-shrink: 0; padding-top: 16px; }
+.access-step { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px; color: var(--access-muted); font: 10px/1.6 "Cascadia Code", Consolas, monospace; letter-spacing: .15em; }
+.access-step small { font-size: 9px; }
+.access-status { text-align: center; }
+.access-status > p { color: #686a62; font-size: 11px; line-height: 1.8; letter-spacing: .1em; }
+.access-status > small, .access-status > p > small { display: block; margin-top: 4px; color: #7a7c73; font: 8px/1.7 "Cascadia Code", Consolas, monospace; letter-spacing: .2em; }
+.access-keyhint { color: #777971; text-align: right; font: 9px/1.9 "Cascadia Code", Consolas, monospace; letter-spacing: .1em; }
+.access-keyhint kbd { font: inherit; color: #4c4e46; }
+.access-keyhint > span { margin-left: 4px; }
+.access-keyhint > a { display: block; min-height: 44px; margin-top: 8px; padding-top: 6px; color: #4c4e46; }
+.access-keyhint > a:hover { color: var(--access-ink); text-decoration: underline; text-underline-offset: 4px; }
+.access-terminal.access-leaving { pointer-events: none; }
+
+/* 中等窗口把旁侧读数移到底部，防止长姓名、岗位与圆环互相遮挡。 */
+@media (max-width: 1100px) {
+  .access-stage { padding-bottom: 94px; }
+  .access-readout { top: auto; bottom: 14px; right: 0; width: 100%; transform: none; text-align: center; font-size: 9px; }
+  .access-readout > span { display: inline; border: 0; padding: 0; }
+  .access-readout dl { grid-template-columns: repeat(3, max-content minmax(0, 1fr)); gap: 7px 12px; max-width: 620px; margin: 8px auto 0; text-align: left; }
+  .access-readout dd { text-align: left; }
+  .access-terminal[data-stage="identity"] .access-stage { padding-bottom: 106px; }
+  .access-terminal[data-stage="verify"] .access-stage { padding-bottom: 98px; }
+  .access-footer { grid-template-columns: 1fr minmax(230px, 45%) 1fr; gap: 16px; }
+  .access-keyhint { max-width: 130px; justify-self: end; }
+}
+@media (max-width: 600px) {
+  .access-terminal { padding: 20px 22px 22px; }
+  .access-terminal::before { inset: 12px 12px; }
+  .access-header { gap: 16px; }
+  .access-header-actions { flex-direction: column; align-items: flex-end; gap: 0; }
+  .access-header-actions .window-switch { min-height: 34px; padding: 5px 8px; font-size: 10px; }
+  .access-brand { grid-template-columns: 30px auto; gap: 8px; }
+  .access-brand img { width: 30px; height: 30px; }
+  .access-brand span { font-size: 18px; }
+  .access-brand small { max-width: 185px; font-size: 7px; letter-spacing: .12em; }
+  .access-skip { font-size: 8px; letter-spacing: .06em; padding-left: 5px; }
+  .access-stage { min-height: 420px; padding: 55px 0 102px; }
+  .access-content h1 { font-size: 26px; letter-spacing: .18em; }
+  .access-subtitle, .access-form-heading > small { font-size: 8px; letter-spacing: .2em; }
+  .access-description { font-size: 11px; max-width: 270px; margin-top: 20px; }
+  .access-primary { gap: 8px; padding: 12px 18px; font-size: 11px; }
+  .access-primary small { font-size: 8px; letter-spacing: .06em; }
+  .access-assembly { width: min(84vw, 48vh, 400px); margin: -24px auto -24px; }
+  .access-terminal[data-stage="verify"] .access-stage { padding-top: 38px; padding-bottom: 106px; }
+  .access-terminal[data-stage="verify"] .access-content h1 { font-size: 26px; }
+  .access-readout { bottom: 18px; font-size: 8px; }
+  .access-readout dl { gap: 5px 8px; }
+  .access-readout > span { font-size: 8px; }
+  .access-footer { grid-template-columns: 1fr auto; gap: 22px 10px; }
+  .access-status { grid-row: 1; grid-column: 1 / -1; }
+  .access-status > p { font-size: 10px; }
+  .access-step { font-size: 9px; gap: 5px; }
+  .access-step small { font-size: 8px; }
+  .access-keyhint { font-size: 8px; max-width: 118px; }
+  .access-terminal[data-stage="identity"] .access-stage { padding-top: 32px; }
+  .access-form-heading { margin-bottom: 22px; }
+  .access-content .auth-tabs { margin-bottom: 20px; }
+  .access-content form, .access-content .form-grid { gap: 15px; }
+  .access-content .field input:not([type="checkbox"]):not([type="radio"]), .access-content .field select { font-size: 16px; }
+}
+@media (max-height: 600px) and (min-width: 601px) {
+  .access-terminal { padding-top: 18px; padding-bottom: 18px; }
+  .access-stage { min-height: 345px; padding-top: 32px; }
+  .access-content h1 { font-size: 30px; }
+  .access-emblem { width: 46px; height: 46px; margin-bottom: 14px; }
+  .access-description { margin-top: 14px; }
+  .access-primary { margin-top: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .access-terminal, .access-terminal *, .access-terminal *::before, .access-terminal *::after {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important;
+  }
+}

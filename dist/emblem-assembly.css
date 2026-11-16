@@ -1,0 +1,11 @@
+/* 动画结束或被取消时，基础样式就是原始徽标的完整终帧，避免构件停在半路。
+   图形来自同一原始路径，只做位移；不叠加另一张已完成的徽标图片。 */
+.emblem-assembly { display: block; width: 100%; height: 100%; color: #141513; fill: currentColor; overflow: visible; }
+.emblem-assembly [data-emblem-arm] { transform: translate(0, 0); opacity: 1; }
+.emblem-assembly circle { fill: none; }
+.emblem-assembly .emblem-sweep { stroke: white; stroke-width: 16; stroke-dasharray: 100 100; stroke-dashoffset: 0; stroke-linecap: butt; }
+.emblem-assembly .emblem-guide { stroke: currentColor; stroke-width: .65; stroke-dasharray: 100 100; stroke-dashoffset: 0; stroke-linecap: butt; opacity: 0; }
+.emblem-assembly .emblem-pulse { stroke: #c4663f; stroke-width: .35; opacity: 0; transform-origin: 0 0; }
+/* 构件允许飞出SVG画布，但只在所属全页舞台内绘制，防止画外起点撑出横向滚动条。
+   overflow:clip不创建新滚动容器，长登录/注册表单仍由页面正常纵向滚动。 */
+.access-terminal:has(.emblem-assembly) { overflow: clip; }

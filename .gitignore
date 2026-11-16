@@ -1,0 +1,15 @@
+node_modules/
+release/
+.build-tools/
+.desktop-dev/
+.desktop-reference/
+.qa/
+java-server/target/
+runtime/java/
+runtime/mysql/
+runtime/mysql-[0-9]*/
+runtime/mysql-current/
+runtime/server/*.jar
+runtime/installer/*.exe
+*.log
+/T.java

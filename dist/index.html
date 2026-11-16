@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN" data-page-transitions="animated">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#20221f">
+  <meta name="description" content="三一匠造参赛作品：工程装备租购、交付、维保与材料审核的本地服务平台。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>三一匠造 · 设备销售客服订单交接与数据审核数字化平台</title>
+  <link rel="icon" href="assets/brand/sany-logo-mono.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="platform.css">
+  <link rel="stylesheet" href="project-service.css">
+  <link rel="stylesheet" href="industrial.css">
+  <link rel="stylesheet" href="arknights.css">
+  <link rel="stylesheet" href="carousel-motion.css">
+  <link rel="stylesheet" href="ui-feedback.css">
+  <link rel="stylesheet" href="emblem-assembly.css">
+  <link rel="stylesheet" href="boot-screen.css">
+  <link rel="stylesheet" href="access-terminal.css">
+  <link rel="stylesheet" href="page-motion.css">
+  <link rel="stylesheet" href="workspace-motion.css">
+  <link rel="stylesheet" href="mobile-workspaces.css">
+  <link rel="stylesheet" href="customer-service.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="#catalog" aria-label="三一匠造首页"><img src="assets/brand/sany-logo-mono.svg" alt="SANY 三一"><span>三一匠造<small>EQUIPMENT & SERVICE</small></span></a>
+    <nav aria-label="主导航">
+      <a href="#catalog" data-nav="catalog"><small>01</small>设备租购</a>
+      <a href="#projects" data-nav="projects"><small>02</small>项目需求</a>
+      <a href="#customer" data-nav="customer"><small>03</small>订单与售后</a>
+      <a href="#work" data-nav="work"><small>04</small>服务工作台</a>
+      <a href="#admin" data-nav="admin"><small>05</small>管理后台 <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div id="identity" class="identity"></div>
+  </header>
+  <main id="main" tabindex="-1"><div class="loading">正在连接本机服务…</div></main>
+  <footer class="footer"><div><img src="assets/brand/sany-logo-mono.svg" alt="SANY"><span>工程装备，全程有据。</span></div><p>独立参赛作品 · 非三一官方交易系统 · 不收取款项<br><span id="releaseVersion">v3.7.3</span> · 本机运行，数据不上传云端</p><div class="footer-links"><button type="button" id="replayBoot">重播品牌开屏</button><a href="#workspace-design">客户与员工岗位设计说明</a><a href="#about">资料来源与使用说明 ↗</a></div></footer>
+  <dialog id="modal" aria-labelledby="modalTitle"><div id="modalContent"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="version.js"></script>
+  <script src="request-id.js"></script>
+  <script src="ui-feedback.js"></script>
+  <script src="emblem-assembly.js"></script>
+  <script src="vendor/three.min.js"></script>
+  <script src="model3d.js"></script>
+  <script src="models.js"></script>
+  <script src="models2.js"></script>
+  <script src="models3.js"></script>
+  <script src="vendor/face-api.js"></script>
+  <script src="face-auth.js"></script>
+  <script src="catalog-navigation.js"></script>
+  <!-- 地址数据先于主程序加载，确保下单弹窗离线即可完成省／市／县（区）联动。 -->
+  <script src="china-regions.js"></script>
+  <script src="project-service.js"></script>
+  <script src="followup-service.js"></script>
+  <script src="access-terminal.js"></script>
+  <script src="page-motion.js"></script>
+  <!-- 先解析三维与人脸依赖，再启动开屏，避免主线程阻塞吞掉首次飞镖入画。 -->
+  <script src="boot-screen.js"></script>
+  <script src="workspace-motion.js"></script>
+  <script src="carousel-motion.js"></script>
+  <script src="workspace-design.js"></script><script src="customer-service.js"></script><script src="admin-tools.js"></script><script src="platform.js"></script>
+</body>
+</html>

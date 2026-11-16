@@ -1,0 +1,38 @@
+/* 反馈只改变光泽、边缘与阴影，不接管transform；页面、双窗口及轮播动画保留各自位移。 */
+@media (hover: hover) and (pointer: fine) {
+  :is(button, .btn, .window-switch, .topbar nav a, .category-chip, .sidebar a, .sidebar button):not(:disabled):not([aria-disabled="true"]):hover {
+    box-shadow: inset 0 0 0 1px rgb(196 102 63 / 48%), 0 3px 13px rgb(20 24 20 / 12%);
+    filter: brightness(1.045);
+  }
+  :is(.product-card, .project-card):hover { border-color: #9b8468; box-shadow: 0 8px 22px rgb(20 24 20 / 13%); }
+}
+:is(button, .btn, .window-switch, .topbar nav a, .category-chip, .sidebar a)[data-ui-pressed="true"] {
+  box-shadow: inset 0 0 0 2px rgb(196 102 63 / 65%), inset 0 2px 8px rgb(20 24 20 / 12%);
+  filter: brightness(.96);
+}
+:is(button, .btn, .window-switch, .category-chip):focus-visible { outline: 2px solid #c4663f; outline-offset: 4px; }
+.ui-feedback-toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 36px; padding: 7px 10px; border: 1px solid currentColor; border-radius: 0;
+  color: inherit; background: transparent; cursor: pointer; white-space: nowrap;
+  font: 10px/1.4 "Microsoft YaHei", "Segoe UI", sans-serif; letter-spacing: .04em;
+  transition: color 160ms, border-color 160ms, background-color 160ms, box-shadow 160ms;
+}
+.ui-feedback-toggle[aria-pressed="false"] { opacity: .72; }
+.ui-sound-bars { display: inline-flex; align-items: center; justify-content: center; gap: 2px; width: 12px; height: 12px; }
+.ui-sound-bars i { width: 2px; height: 5px; background: currentColor; }
+.ui-sound-bars i:nth-child(2) { height: 11px; }.ui-sound-bars i:nth-child(3) { height: 8px; }
+[aria-pressed="false"] > .ui-sound-bars i { height: 2px; }
+.footer .footer-links { flex-wrap: wrap; }
+.footer .ui-feedback-toggle { color: #cfd2cd; }
+.access-keyhint .ui-feedback-toggle { display: flex; margin: 7px 0 0 auto; min-height: 36px; padding: 5px 9px; color: #65675e; }
+.boot-bottom .ui-feedback-toggle { display: flex; margin: 12px auto 0; color: #65675e; }
+/* 横屏不额外抬高底栏，避免流程说明被推到品牌标题上；极矮窄屏改放在头部按钮下方。 */
+@media (max-height: 500px) {
+  .boot-bottom .ui-feedback-toggle { position: absolute; right: 0; bottom: 0; margin: 0; min-height: 30px; padding-block: 4px; }
+}
+@media (max-width: 600px) and (max-height: 500px) {
+  .boot-bottom .ui-feedback-toggle { position: fixed; top: 76px; right: 6%; bottom: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .ui-feedback-toggle { transition: none; } }
+@media print { .ui-feedback-toggle { display: none !important; } }

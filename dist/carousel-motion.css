@@ -1,0 +1,16 @@
+/* 轮播退场层裁在设备档案内部，长位移动画不会撑出页面横向滚动。 */
+.hero-carousel .hero-slide { overflow: hidden; isolation: isolate; }
+.hero-carousel .hero-slide-outgoing { position: absolute; inset: 0; z-index: 2; pointer-events: none; margin: 0; background: #242b28; }
+.hero-carousel .hero-controls { grid-template-columns: 40px minmax(0, 1fr) 40px; }
+.hero-hint { margin: 8px 0 0; color: #afb8b0; font: 10px/1.6 var(--terminal-mono, monospace); letter-spacing: .02em; text-align: center; }
+.hero-carousel[data-playback="paused"] .hero-hint { color: #d5d6ae; }
+.hero-carousel:focus-visible { outline: 2px solid #eceb3d; outline-offset: 5px; }
+.hero-slide[data-hero-motion="running"] > .hero-equipment-canvas,
+.hero-slide[data-hero-motion="running"] > .hero-slide-info { will-change: transform, opacity; }
+@media (max-width: 600px) {
+  .hero-carousel .hero-controls { grid-template-columns: 36px minmax(0, 1fr) 36px; }
+  .hero-hint { font-size: 9px; letter-spacing: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-outgoing { display: none; }
+}

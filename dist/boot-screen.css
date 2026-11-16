@@ -1,0 +1,28 @@
+/* 开屏使用纸白和黑灰橙，围绕矢量徽标构图；不使用闪白或 RGB 抖动，避免视觉刺激。 */
+dialog.boot-screen{inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;border:0;border-radius:0;padding:40px 5.5%;background:#e8e7e3;color:#141513;overflow:hidden;box-shadow:none;display:none;flex-direction:column;justify-content:space-between;font-family:"Microsoft YaHei","Segoe UI",sans-serif}
+dialog.boot-screen[open]{display:flex}
+.boot-screen::backdrop{background:#e8e7e3}
+.boot-screen.boot-leaving,.boot-screen.boot-leaving::backdrop{animation:boot-dissolve .3s ease-in-out forwards}
+.boot-top,.boot-bottom{position:relative;z-index:2}
+.boot-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.boot-top>div{font-size:23px;font-weight:800;letter-spacing:.25em}
+.boot-top small{display:block;margin-top:10px;font:10px/1.6 Consolas,monospace;letter-spacing:.16em;color:#65655f}
+.boot-skip{height:44px;padding:0 18px;background:transparent;border:1px solid #777971;color:#141513;font:inherit;font-size:13px;cursor:pointer;letter-spacing:.08em}
+.boot-skip span{margin-left:22px}.boot-skip:hover{background:#d9d8d2}.boot-skip:focus-visible{outline:3px solid #a74c2b;outline-offset:5px}
+.boot-stage{position:absolute;inset:47% auto auto 50%;width:min(90vw,680px);transform:translate(-50%,-50%);text-align:center}
+/* 中央是正在组装的同一枚徽标，标题移到下方；不再套外置大圆或在落位后换图片。 */
+.boot-assembly{width:min(80vw,56vh,500px);aspect-ratio:1;margin:0 auto -28px}
+.boot-assembly>img{width:58%;height:58%;margin:21%;object-fit:contain;filter:grayscale(1) brightness(.15)}
+.boot-brand{position:relative;text-align:center}
+.boot-brand h1{font-size:clamp(17px,2.2vw,27px);letter-spacing:.16em;margin:0;font-weight:800}
+.boot-brand p{font:10px/1.6 Consolas,monospace;letter-spacing:.15em;margin:14px 0;color:#6e6f68}
+.boot-bottom{margin-top:auto;text-align:center}.boot-bottom>span{font-size:13px;letter-spacing:.09em}.boot-bottom b{font-weight:400;margin:0 14px;color:#8c8e84}
+.boot-bottom small{display:block;margin-top:16px;font-size:11px;color:#6e6f68;letter-spacing:.06em}
+/* 员工端复用同一套组装动画，仅把三一徽标和扫描脉冲切换为员工红。 */
+html[data-boot-theme="employee"] .boot-screen .emblem-assembly{color:#c8202f}
+html[data-boot-theme="employee"] .boot-screen .emblem-pulse{stroke:#c8202f}
+html[data-boot-theme="employee"] .boot-screen .boot-assembly>img{filter:none}
+@keyframes boot-dissolve{to{opacity:0}}
+@media(max-width:600px){dialog.boot-screen{padding:25px 6%}.boot-top>div{font-size:19px}.boot-top small{font-size:8px;letter-spacing:0}.boot-skip{padding:0 10px}.boot-skip span{margin-left:6px}.boot-stage{width:90vw}.boot-assembly{width:min(90vw,55vh);margin-bottom:-16px}.boot-bottom>span{font-size:11px;letter-spacing:0}.boot-bottom b{margin:0 7px}}
+@media(max-height:500px){dialog.boot-screen{padding-block:18px}.boot-assembly{width:min(50vw,65vh);margin-bottom:-22px}.boot-brand h1{font-size:17px}.boot-brand p{display:none}.boot-top>div{font-size:16px}.boot-top small{margin-top:4px}.boot-bottom small{display:none}}
+@media(prefers-reduced-motion:reduce){.boot-screen *{animation:none!important}}

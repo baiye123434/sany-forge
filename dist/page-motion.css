@@ -1,0 +1,24 @@
+/* 公共导航保持稳定，只有主内容做短交叉淡化；不使用大幅缩放、模糊或整屏滑动。 */
+:root { view-transition-name: none; }
+#main { view-transition-name: page-content; }
+::view-transition { pointer-events: none; }
+::view-transition-group(page-content) { animation-duration: 280ms; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
+::view-transition-image-pair(page-content) { isolation: isolate; }
+::view-transition-old(page-content), ::view-transition-new(page-content) { mix-blend-mode: normal; height: 100%; object-fit: none; object-position: top left; }
+::view-transition-old(page-content) { animation: page-out 180ms ease-out both; }
+::view-transition-new(page-content) { animation: page-in 280ms cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes page-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.topbar nav a, .sidebar button, .auth-tabs button { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.route-progress { position: fixed; z-index: 1001; top: 0; left: 0; width: 100%; padding: 6px 20px; background: #202527; border-bottom: 2px solid #eceb3d; color: #eceb3d; text-align: center; font-size: 12px; letter-spacing: .08em; pointer-events: none; }
+.route-progress[hidden] { display: none; }
+/* 原生 close 事件立即清理摄像头，只有绘制层保留短退出，不能为动画延迟安全清理。 */
+#modal { opacity: 0; transform: translateY(10px) scale(.99); transition: opacity 160ms ease, transform 220ms cubic-bezier(.22,1,.36,1), display 220ms allow-discrete, overlay 220ms allow-discrete; }
+#modal[open] { opacity: 1; transform: none; }
+#modal::backdrop { opacity: 0; transition: opacity 180ms ease, display 220ms allow-discrete, overlay 220ms allow-discrete; }
+#modal[open]::backdrop { opacity: 1; }
+@starting-style { #modal[open] { opacity: 0; transform: translateY(10px) scale(.99); } #modal[open]::backdrop { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .topbar nav a, .sidebar button, .auth-tabs button, #modal, #modal::backdrop { transition: none !important; }
+}

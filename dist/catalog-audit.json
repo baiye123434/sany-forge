@@ -1,0 +1,1003 @@
+{
+  "startedAt": "2026-10-20T09:39:14.617Z",
+  "collectedDate": "2026-10-20",
+  "scope": "三一集团中文主站当前公开导航的全部主类及列表分页；不包含独立子公司站、海外站和需登录的配件商城。",
+  "evidence": [
+    {
+      "page": "https://www.sanygroup.com/product-solution/",
+      "scriptUrl": "https://www.sanygroup.com/_nuxt/8f56c91.js",
+      "publicApiPattern": "api/ssrdata/single?id=141"
+    },
+    {
+      "page": "https://www.sanygroup.com/product/tushifangjixie/",
+      "scriptUrl": "https://www.sanygroup.com/_nuxt/432b9ad.js",
+      "publicApiPattern": "api/product/getbyparentcate"
+    },
+    {
+      "page": "https://www.sanygroup.com/product/tushifangjixie/",
+      "scriptUrl": "https://www.sanygroup.com/_nuxt/8f56c91.js",
+      "publicImageVariant": "imageMogr2/format/webp"
+    },
+    {
+      "page": "https://www.sanygroup.com/product-solution/",
+      "officialBrandAsset": "https://www.sanygroup.com/img/sany-logo.svg",
+      "localPath": "assets/brand/sany-logo.svg"
+    },
+    {
+      "page": "https://www.sanygroup.com/product-solution/",
+      "officialBrandAsset": "https://www.sanygroup.com/img/sany-logo.png",
+      "localPath": "assets/brand/sany-logo.png"
+    }
+  ],
+  "categories": [
+    {
+      "id": 3,
+      "name": "土石方机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=3",
+      "subcategories": [
+        {
+          "id": 21,
+          "name": "微挖"
+        },
+        {
+          "id": 22,
+          "name": "小挖"
+        },
+        {
+          "id": 23,
+          "name": "中挖"
+        },
+        {
+          "id": 24,
+          "name": "大挖"
+        },
+        {
+          "id": 25,
+          "name": "轮式挖掘机"
+        },
+        {
+          "id": 26,
+          "name": "装载机"
+        },
+        {
+          "id": 147,
+          "name": "多样化产品"
+        },
+        {
+          "id": 191,
+          "name": "属具"
+        }
+      ],
+      "expectedCount": 92,
+      "receivedCount": 92,
+      "uniqueCount": 92,
+      "pages": [
+        {
+          "page": 1,
+          "count": 50,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=3"
+        },
+        {
+          "page": 2,
+          "count": 42,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=2&limit=50&cate=3"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 10,
+      "name": "三一重卡",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=10",
+      "subcategories": [
+        {
+          "id": 135,
+          "name": "电动牵引车"
+        },
+        {
+          "id": 165,
+          "name": "换电站"
+        },
+        {
+          "id": 166,
+          "name": "氢燃料牵引车"
+        },
+        {
+          "id": 164,
+          "name": "江山电动轻卡"
+        }
+      ],
+      "expectedCount": 11,
+      "receivedCount": 11,
+      "uniqueCount": 11,
+      "pages": [
+        {
+          "page": 1,
+          "count": 11,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=10"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 5,
+      "name": "起重机",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=5",
+      "subcategories": [
+        {
+          "id": 34,
+          "name": "汽车起重机"
+        },
+        {
+          "id": 35,
+          "name": "全地面起重机"
+        },
+        {
+          "id": 109,
+          "name": "桁架臂履带起重机"
+        },
+        {
+          "id": 131,
+          "name": "伸缩臂履带起重机"
+        },
+        {
+          "id": 132,
+          "name": "多功能履带起重机"
+        },
+        {
+          "id": 39,
+          "name": "随车起重机"
+        }
+      ],
+      "expectedCount": 55,
+      "receivedCount": 55,
+      "uniqueCount": 55,
+      "pages": [
+        {
+          "page": 1,
+          "count": 50,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=5"
+        },
+        {
+          "page": 2,
+          "count": 5,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=2&limit=50&cate=5"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 9,
+      "name": "自卸车",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=9",
+      "subcategories": [
+        {
+          "id": 54,
+          "name": "燃油自卸车"
+        },
+        {
+          "id": 117,
+          "name": "电动自卸车"
+        },
+        {
+          "id": 184,
+          "name": "混合动力自卸车"
+        }
+      ],
+      "expectedCount": 15,
+      "receivedCount": 15,
+      "uniqueCount": 15,
+      "pages": [
+        {
+          "page": 1,
+          "count": 15,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=9"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 4,
+      "name": "混凝土机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=4",
+      "subcategories": [
+        {
+          "id": 18,
+          "name": "泵车"
+        },
+        {
+          "id": 27,
+          "name": "搅拌车"
+        },
+        {
+          "id": 28,
+          "name": "混凝土搅拌站"
+        },
+        {
+          "id": 20,
+          "name": "车载泵"
+        },
+        {
+          "id": 136,
+          "name": "电动车载泵"
+        },
+        {
+          "id": 19,
+          "name": "拖泵"
+        },
+        {
+          "id": 30,
+          "name": "砂浆泵"
+        },
+        {
+          "id": 31,
+          "name": "湿喷机"
+        },
+        {
+          "id": 32,
+          "name": "充填泵"
+        },
+        {
+          "id": 116,
+          "name": "新能源搅拌车"
+        },
+        {
+          "id": 121,
+          "name": "干混砂浆搅拌站"
+        },
+        {
+          "id": 29,
+          "name": "砂浆/混凝土双用搅拌站"
+        }
+      ],
+      "expectedCount": 90,
+      "receivedCount": 90,
+      "uniqueCount": 90,
+      "pages": [
+        {
+          "page": 1,
+          "count": 50,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=4"
+        },
+        {
+          "page": 2,
+          "count": 40,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=2&limit=50&cate=4"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 208,
+      "name": "装载机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=208",
+      "subcategories": [
+        {
+          "id": 209,
+          "name": "新能源装载机"
+        },
+        {
+          "id": 210,
+          "name": "燃油装载机"
+        },
+        {
+          "id": 211,
+          "name": "滑移装载机"
+        }
+      ],
+      "expectedCount": 9,
+      "receivedCount": 9,
+      "uniqueCount": 9,
+      "pages": [
+        {
+          "page": 1,
+          "count": 9,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=208"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 6,
+      "name": "路面机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=6",
+      "subcategories": [
+        {
+          "id": 41,
+          "name": "摊铺机"
+        },
+        {
+          "id": 42,
+          "name": "压路机"
+        },
+        {
+          "id": 43,
+          "name": "平地机"
+        },
+        {
+          "id": 44,
+          "name": "铣刨机"
+        },
+        {
+          "id": 45,
+          "name": "沥青搅拌站"
+        }
+      ],
+      "expectedCount": 41,
+      "receivedCount": 41,
+      "uniqueCount": 41,
+      "pages": [
+        {
+          "page": 1,
+          "count": 41,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=6"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 12,
+      "name": "港口机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=12",
+      "subcategories": [
+        {
+          "id": 64,
+          "name": "正面吊"
+        },
+        {
+          "id": 65,
+          "name": "集装箱空箱堆高机"
+        },
+        {
+          "id": 66,
+          "name": "叉车"
+        },
+        {
+          "id": 71,
+          "name": "抓钢（料）机"
+        },
+        {
+          "id": 72,
+          "name": "纯电动港口牵引车"
+        },
+        {
+          "id": 113,
+          "name": "伸缩臂叉车"
+        },
+        {
+          "id": 69,
+          "name": "岸边集装箱起重机"
+        },
+        {
+          "id": 68,
+          "name": "轨道式集装箱门式起重机"
+        },
+        {
+          "id": 67,
+          "name": "轮胎式集装箱门式起重机"
+        },
+        {
+          "id": 70,
+          "name": "门座式起重机"
+        }
+      ],
+      "expectedCount": 48,
+      "receivedCount": 48,
+      "uniqueCount": 48,
+      "pages": [
+        {
+          "page": 1,
+          "count": 48,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=12"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 7,
+      "name": "桩工机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=7",
+      "subcategories": [
+        {
+          "id": 46,
+          "name": "旋挖钻机"
+        },
+        {
+          "id": 48,
+          "name": "连续墙抓斗"
+        },
+        {
+          "id": 128,
+          "name": "双轮铣槽机"
+        },
+        {
+          "id": 138,
+          "name": "非开挖产品"
+        }
+      ],
+      "expectedCount": 12,
+      "receivedCount": 12,
+      "uniqueCount": 12,
+      "pages": [
+        {
+          "page": 1,
+          "count": 12,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=7"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 11,
+      "name": "煤炭机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=11",
+      "subcategories": [
+        {
+          "id": 56,
+          "name": "掘进机"
+        },
+        {
+          "id": 57,
+          "name": "工程掘进机"
+        },
+        {
+          "id": 58,
+          "name": "刮板机系列产品"
+        },
+        {
+          "id": 59,
+          "name": "采煤机"
+        },
+        {
+          "id": 60,
+          "name": "液压支架"
+        },
+        {
+          "id": 63,
+          "name": "巷道修复机"
+        }
+      ],
+      "expectedCount": 37,
+      "receivedCount": 37,
+      "uniqueCount": 37,
+      "pages": [
+        {
+          "page": 1,
+          "count": 37,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=11"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 13,
+      "name": "风电设备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=13",
+      "subcategories": [
+        {
+          "id": 74,
+          "name": "3.X 中低风速型风力发电机组"
+        },
+        {
+          "id": 75,
+          "name": "4.X 中高风速 / 全天候 / 定制化产品平台"
+        },
+        {
+          "id": 127,
+          "name": "5.X-6.X MW定制化产品平台"
+        }
+      ],
+      "expectedCount": 9,
+      "receivedCount": 9,
+      "uniqueCount": 9,
+      "pages": [
+        {
+          "page": 1,
+          "count": 9,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=13"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 14,
+      "name": "建筑工业化",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=14",
+      "subcategories": [
+        {
+          "id": 179,
+          "name": "智能PC装备"
+        },
+        {
+          "id": 180,
+          "name": "智能AAC装备"
+        },
+        {
+          "id": 181,
+          "name": "智能钢筋加工装备"
+        },
+        {
+          "id": 183,
+          "name": "工模夹具"
+        },
+        {
+          "id": 76,
+          "name": "2类标准"
+        },
+        {
+          "id": 80,
+          "name": "3软1平台"
+        }
+      ],
+      "expectedCount": 32,
+      "receivedCount": 32,
+      "uniqueCount": 32,
+      "pages": [
+        {
+          "page": 1,
+          "count": 32,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=14"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 175,
+      "name": "破碎装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=175",
+      "subcategories": [
+        {
+          "id": 199,
+          "name": "移动反击式破碎站"
+        },
+        {
+          "id": 200,
+          "name": "移动颚式破碎站"
+        },
+        {
+          "id": 201,
+          "name": "移动圆锥式破碎站"
+        },
+        {
+          "id": 202,
+          "name": "移动筛分站"
+        },
+        {
+          "id": 176,
+          "name": "破碎主机"
+        },
+        {
+          "id": 177,
+          "name": "筛分主机"
+        },
+        {
+          "id": 178,
+          "name": "制砂楼"
+        }
+      ],
+      "expectedCount": 16,
+      "receivedCount": 16,
+      "uniqueCount": 16,
+      "pages": [
+        {
+          "page": 1,
+          "count": 16,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=175"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 15,
+      "name": "石油装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=15",
+      "subcategories": [
+        {
+          "id": 213,
+          "name": "钻修装备"
+        },
+        {
+          "id": 82,
+          "name": "机械压裂"
+        },
+        {
+          "id": 83,
+          "name": "电驱压裂"
+        },
+        {
+          "id": 104,
+          "name": "连油设备"
+        },
+        {
+          "id": 106,
+          "name": "井口自动化"
+        },
+        {
+          "id": 145,
+          "name": "油田机械"
+        },
+        {
+          "id": 87,
+          "name": "压裂泵"
+        }
+      ],
+      "expectedCount": 20,
+      "receivedCount": 20,
+      "uniqueCount": 20,
+      "pages": [
+        {
+          "page": 1,
+          "count": 20,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=15"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 186,
+      "name": "三一环境",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=186",
+      "subcategories": [
+        {
+          "id": 187,
+          "name": "纯电动路面清洁车"
+        },
+        {
+          "id": 188,
+          "name": "纯电动固废收转车"
+        },
+        {
+          "id": 189,
+          "name": "市政检修车"
+        }
+      ],
+      "expectedCount": 7,
+      "receivedCount": 7,
+      "uniqueCount": 7,
+      "pages": [
+        {
+          "page": 1,
+          "count": 7,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=186"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 16,
+      "name": "环保工程",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=16",
+      "subcategories": [
+        {
+          "id": 88,
+          "name": "蒸气压缩机"
+        },
+        {
+          "id": 90,
+          "name": "废水零排放"
+        },
+        {
+          "id": 91,
+          "name": "有机废气治理工程"
+        }
+      ],
+      "expectedCount": 6,
+      "receivedCount": 6,
+      "uniqueCount": 6,
+      "pages": [
+        {
+          "page": 1,
+          "count": 6,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=16"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 17,
+      "name": "应急救援装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=17",
+      "subcategories": [
+        {
+          "id": 101,
+          "name": "压缩空气泡沫消防车"
+        },
+        {
+          "id": 102,
+          "name": "无人机"
+        },
+        {
+          "id": 103,
+          "name": "专勤类消防车"
+        },
+        {
+          "id": 112,
+          "name": "战勤保障类消防车"
+        },
+        {
+          "id": 92,
+          "name": "举高喷射消防车"
+        },
+        {
+          "id": 100,
+          "name": "登高平台消防车"
+        }
+      ],
+      "expectedCount": 9,
+      "receivedCount": 9,
+      "uniqueCount": 9,
+      "pages": [
+        {
+          "page": 1,
+          "count": 9,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=17"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 8,
+      "name": "矿用自卸车",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=8",
+      "subcategories": [
+        {
+          "id": 50,
+          "name": "机械传动矿用自卸车(刚性矿卡)"
+        },
+        {
+          "id": 53,
+          "name": "宽体自卸车"
+        }
+      ],
+      "expectedCount": 5,
+      "receivedCount": 5,
+      "uniqueCount": 5,
+      "pages": [
+        {
+          "page": 1,
+          "count": 5,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=8"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 139,
+      "name": "高空作业机械",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=139",
+      "subcategories": [
+        {
+          "id": 140,
+          "name": "直臂系列"
+        },
+        {
+          "id": 141,
+          "name": "曲臂系列"
+        },
+        {
+          "id": 142,
+          "name": "剪叉系列"
+        }
+      ],
+      "expectedCount": 10,
+      "receivedCount": 10,
+      "uniqueCount": 10,
+      "pages": [
+        {
+          "page": 1,
+          "count": 10,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=139"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 148,
+      "name": "锂电装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=148",
+      "subcategories": [
+        {
+          "id": 149,
+          "name": "高速匀浆系统"
+        },
+        {
+          "id": 150,
+          "name": "双层挤压涂布机"
+        },
+        {
+          "id": 151,
+          "name": "辊压分切一体机"
+        },
+        {
+          "id": 152,
+          "name": "Z型切叠一体机"
+        },
+        {
+          "id": 153,
+          "name": "卷绕机"
+        },
+        {
+          "id": 154,
+          "name": "一次、二次注液机"
+        },
+        {
+          "id": 155,
+          "name": "化成分容针床"
+        },
+        {
+          "id": 156,
+          "name": "模组PACK线"
+        }
+      ],
+      "expectedCount": 1,
+      "receivedCount": 1,
+      "uniqueCount": 1,
+      "pages": [
+        {
+          "page": 1,
+          "count": 1,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=148"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 157,
+      "name": "仓储物流",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=157",
+      "subcategories": [
+        {
+          "id": 158,
+          "name": "电动叉车"
+        },
+        {
+          "id": 159,
+          "name": "立体库"
+        },
+        {
+          "id": 160,
+          "name": "搬运AGV"
+        }
+      ],
+      "expectedCount": 21,
+      "receivedCount": 21,
+      "uniqueCount": 21,
+      "pages": [
+        {
+          "page": 1,
+          "count": 21,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=157"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 161,
+      "name": "光伏产品",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=161",
+      "subcategories": [
+        {
+          "id": 162,
+          "name": "光伏电池"
+        },
+        {
+          "id": 163,
+          "name": "光伏组件"
+        }
+      ],
+      "expectedCount": 4,
+      "receivedCount": 4,
+      "uniqueCount": 4,
+      "pages": [
+        {
+          "page": 1,
+          "count": 4,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=161"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 167,
+      "name": "氢能装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=167",
+      "subcategories": [
+        {
+          "id": 168,
+          "name": "碱性电解水制氢装备"
+        },
+        {
+          "id": 169,
+          "name": "PEM电解水制氢装备"
+        },
+        {
+          "id": 170,
+          "name": "制加氢一体站"
+        }
+      ],
+      "expectedCount": 9,
+      "receivedCount": 9,
+      "uniqueCount": 9,
+      "pages": [
+        {
+          "page": 1,
+          "count": 9,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=167"
+        }
+      ],
+      "complete": true
+    },
+    {
+      "id": 203,
+      "name": "锂能装备",
+      "sourceUrl": "https://www.sanygroup.com/product-list/?cate=203",
+      "subcategories": [
+        {
+          "id": 204,
+          "name": "工商业一体柜"
+        },
+        {
+          "id": 205,
+          "name": "集装箱储能"
+        }
+      ],
+      "expectedCount": 2,
+      "receivedCount": 2,
+      "uniqueCount": 2,
+      "pages": [
+        {
+          "page": 1,
+          "count": 2,
+          "url": "https://api-www.sanygroup.com/api/product/getbyparentcate?page=1&limit=50&cate=203"
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "errors": [],
+  "imageFailures": [],
+  "warnings": [],
+  "categoryTreeSource": "https://api-www.sanygroup.com/api/ssrdata/single?id=141",
+  "categoryCount": 24,
+  "subcategoryCount": 119,
+  "finishedAt": "2026-10-20T09:40:18.543Z",
+  "expectedProductRows": 561,
+  "receivedProductRows": 561,
+  "uniqueProductCount": 561,
+  "duplicateRows": 0,
+  "localImageCount": 561,
+  "productsWithoutSpecs": [
+    "official-794",
+    "official-798",
+    "official-1588",
+    "official-709",
+    "official-710",
+    "official-711",
+    "official-135",
+    "official-1394",
+    "official-1395",
+    "official-1396",
+    "official-1400",
+    "official-1401",
+    "official-1402",
+    "official-736",
+    "official-737",
+    "official-738",
+    "official-741",
+    "official-742",
+    "official-743",
+    "official-701",
+    "official-1199",
+    "official-1200",
+    "official-1279",
+    "official-1374"
+  ],
+  "complete": true,
+  "limitations": [
+    "“全部”限定于采集时三一集团中文主站公开导航分类及其分页返回产品，不等同于全球所有子公司和历史型号。",
+    "规格为官网原值，未补造售价、库存、运行数据或质保期限；没有精确三维资产的产品统一标注暂无3D模型。",
+    "封面图片为官网公开资产，仅在此参赛作品中引用；来源地址随产品保留。",
+    "未公布规格的产品保留简介与官网链接，不以零值或演示参数补齐。"
+  ],
+  "catalogSha256": "d8748c294045b9606617eb542bbf9a437bcf64c78205b58ef5fc5ad463a6fb40"
+}

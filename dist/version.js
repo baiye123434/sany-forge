@@ -1,0 +1,2 @@
+'use strict';
+window.SANY_RELEASE = Object.freeze({ version: '3.7.3', date: '2026-11-16' });

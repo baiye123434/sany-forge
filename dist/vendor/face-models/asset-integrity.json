@@ -1,0 +1,65 @@
+{
+  "package": "@vladmandic/face-api",
+  "version": "1.7.15",
+  "commit": "189226d63aabb48cb40776fd1c453ebc0fa722f1",
+  "license": "MIT",
+  "retrievedAt": "2026-10-20T09:54:18.450Z",
+  "totalBytes": 8371880,
+  "files": [
+    {
+      "file": "face-api.js",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/dist/face-api.js",
+      "bytes": 1333943,
+      "sha256": "0160f7af3a8c78cece45c7ecc765383bad74becfd438bb787cdd627b2d6f2cf6"
+    },
+    {
+      "file": "face-api.LICENSE.txt",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/LICENSE",
+      "bytes": 1067,
+      "sha256": "9a3442b79acaf4fbc7c2e07b7e2d8f84af9bb3871bf08a69d80304ab00640e9a"
+    },
+    {
+      "file": "face-api.tfjs.LICENSE.txt",
+      "source": "https://raw.githubusercontent.com/tensorflow/tfjs/tfjs-v4.22.0/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "file": "face-models/tiny_face_detector_model-weights_manifest.json",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/tiny_face_detector_model-weights_manifest.json",
+      "bytes": 3219,
+      "sha256": "5d1af4849ac48d5b985f4a9b16010c512353ddd6fcc63d50fd0bc9e9e64296e5"
+    },
+    {
+      "file": "face-models/tiny_face_detector_model.bin",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/tiny_face_detector_model.bin",
+      "bytes": 193321,
+      "sha256": "b7503ce7df31039b1c43316a9b865cab6a70dd748cc602d3fa28b551503c3871"
+    },
+    {
+      "file": "face-models/face_landmark_68_model-weights_manifest.json",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/face_landmark_68_model-weights_manifest.json",
+      "bytes": 8485,
+      "sha256": "ca4886639f86e99b39fed0c155f81b63317225773bd9616716e887b0153389c9"
+    },
+    {
+      "file": "face-models/face_landmark_68_model.bin",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/face_landmark_68_model.bin",
+      "bytes": 356840,
+      "sha256": "4611ef65c87d836d03d684b30eec4d195d8b219fa1dd58fc58945831c6b9299b"
+    },
+    {
+      "file": "face-models/face_recognition_model-weights_manifest.json",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/face_recognition_model-weights_manifest.json",
+      "bytes": 19615,
+      "sha256": "cbaffa501b0b9275a12b63357a6843e7e30c054e1c9151e1a5f879b26e32986b"
+    },
+    {
+      "file": "face-models/face_recognition_model.bin",
+      "source": "https://raw.githubusercontent.com/vladmandic/face-api/189226d63aabb48cb40776fd1c453ebc0fa722f1/model/face_recognition_model.bin",
+      "gitBlob": "62496a8f2b884aa2669531eadff1c1e7dfffc85b",
+      "bytes": 6444032,
+      "sha256": "b413e420d6840b2775fba32008db6f3cddb07d485967fb42cfcf379c16a8c589"
+    }
+  ]
+}

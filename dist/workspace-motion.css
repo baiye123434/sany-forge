@@ -1,0 +1,10 @@
+/* 组件出画不改变滚动容器宽度；准备和退场终点统一隐藏原画面，避免容器底色残留。 */
+html[data-workspace-motion]:not([data-workspace-motion="idle"]) { overflow-x: clip; }
+html[data-workspace-motion]:not([data-workspace-motion="idle"]) body { overflow-x: clip; }
+html[data-workspace-motion="prepared"] body > :not(script):not(style),
+html[data-workspace-motion="departed"] body > :not(script):not(style) { visibility: hidden !important; }
+html[data-workspace-motion="leaving"] *,
+html[data-workspace-motion="entering"] * { pointer-events: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-workspace-motion] { scroll-behavior: auto; }
+}

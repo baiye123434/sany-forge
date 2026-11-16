@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" fill="none">
+  <!-- 以正投影网格、设备定位环和角标构成工程观察画布；没有使用游戏截图素材。 -->
+  <defs>
+    <pattern id="minor" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#52665a" stroke-opacity=".12" stroke-width="1"/></pattern>
+    <pattern id="major" width="150" height="150" patternUnits="userSpaceOnUse"><path d="M150 0H0V150" stroke="#52665a" stroke-opacity=".12" stroke-width="1"/><path d="M74 75h2m-1-1v2" stroke="#52665a" stroke-opacity=".32"/></pattern>
+  </defs>
+  <path fill="url(#minor)" d="M0 0h900v500H0z"/>
+  <path fill="url(#major)" d="M0 0h900v500H0z"/>
+  <ellipse cx="450" cy="389" rx="240" ry="63" stroke="#6d7c6c" stroke-opacity=".28"/>
+  <ellipse cx="450" cy="389" rx="200" ry="46" stroke="#6d7c6c" stroke-opacity=".24" stroke-dasharray="4 7"/>
+  <path d="M26 60V26h34m780 0h34v34M26 440v34h34m780 0h34v-34" stroke="#415543" stroke-opacity=".45" stroke-width="2"/>
+  <path d="M450 0v24m0 452v48M0 250h24m852 0h48" stroke="#415543" stroke-opacity=".4"/>
+  <path d="M55 415h95l33-30m562-290h99m-99 8h57" stroke="#415543" stroke-opacity=".32"/>
+  <path d="M410 474h80" stroke="#798b52" stroke-opacity=".35" stroke-width="3"/>
+</svg>

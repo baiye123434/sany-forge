@@ -1,0 +1,70 @@
+/* 首页客服入口固定在视口右下角；未登录时也保持可见。 */
+.cu-floating{position:fixed;right:24px;bottom:24px;z-index:80;background:#edee27;color:#202823;border:2px solid #202823;border-radius:50%;box-shadow:0 10px 30px #20282333;width:76px;height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.cu-floating span{font-size:29px;line-height:1}.cu-floating b{font-size:12px}
+.cu-account{max-width:600px;margin:24px auto}.cu-account .field{margin:16px 0}.cu-account summary{cursor:pointer;font-weight:bold}
+#customerChat{width:min(440px,calc(100% - 24px));max-width:calc(100% - 24px);max-height:calc(100dvh - 24px);margin:auto 20px 20px auto;padding:0;border:2px solid #27372f;background:#f5f6ef;color:#202823}
+#customerChat::backdrop{background:rgba(20,30,23,.3)}.cu-dialog-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#24372e;color:white;gap:15px}.cu-dialog-head h2{margin:0;font-size:20px}.cu-dialog-head button{background:transparent;color:white;border:1px solid #88968c;padding:6px 12px;cursor:pointer}
+#customerChatBody{padding:18px}#customerChatBody .field{display:grid;gap:8px;margin:12px 0}#customerChatBody input,#customerChatBody textarea{width:100%;min-width:0;padding:10px;border:1px solid #aab3a6;background:white;color:#202823;font:inherit}
+.cu-messages{height:280px;overflow:auto;overscroll-behavior:contain;background:#e7ebe2;padding:12px}.cu-message{padding:8px 12px;background:white;max-width:92%;width:fit-content;margin:8px 0;overflow-wrap:anywhere}.cu-message.mine{margin-left:auto;background:#e9ed93}.cu-message small{font-size:11px;color:#5a665b}.cu-message p{white-space:pre-wrap;margin:4px 0}.cu-inbox{display:flex;flex-direction:column;text-align:left;width:100%;gap:8px;background:white;border:1px solid #abb7ac;padding:18px;margin:12px 0;cursor:pointer;overflow-wrap:anywhere}.cu-inbox span{white-space:pre-wrap}.cu-inbox small{color:#667060}
+@media(max-width:600px){.cu-floating{right:12px;bottom:calc(14px + env(safe-area-inset-bottom));width:64px;height:64px}#customerChat{margin:auto;width:calc(100% - 16px);max-width:calc(100% - 16px)}.cu-messages{height:min(35dvh,280px)}#customerChatBody{padding:14px}.cu-account{margin:16px 0}.cu-dialog-head button{min-height:44px}}
+
+.cu-floating{padding:6px!important}.cu-floating b{white-space:nowrap}
+/* 附件和图片在消息气泡中展示，窄屏不越出聊天窗口。 */
+.cu-file{display:block;max-width:100%;padding:8px;margin:8px 0;border:1px solid #cdd6c6;background:#f5f7ef;font-size:12px;text-align:left;overflow-wrap:anywhere}.cu-chat-image{display:block;max-width:min(260px,100%);max-height:220px;border-radius:6px;margin:8px 0;object-fit:contain}
+.cu-composer{border-top:1px solid #d9dfd5;padding-top:10px}.cu-composer textarea{display:block;width:100%;min-height:78px;max-height:180px;padding:10px 2px!important;border:0!important;resize:vertical}.cu-chat-tools{display:flex;align-items:center;gap:12px;color:#687269;font-size:11px}.cu-chat-tool{position:relative;display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:5px;cursor:pointer}.cu-chat-tool:hover{background:#eef1eb;color:#202823}.cu-chat-tool svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:round}.cu-file-input{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0!important}.cu-pending-files{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;padding:8px 10px;border:1px solid #d8e0d2;background:#f4f7ef;font-size:11px;overflow-wrap:anywhere}.cu-pending-files[hidden]{display:none}.cu-pending-files .btn{padding:5px 8px;white-space:nowrap}.cu-send-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cu-send-row>small{margin-right:auto;color:#687269;font-size:10px}.cu-send-row .form-error:not(:empty){width:100%;order:-1}
+
+.topbar .identity{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:10px;max-width:none;flex-shrink:0}.topbar .identity>*{flex:0 0 auto;white-space:nowrap}.topbar{flex-wrap:wrap}.topbar nav{min-width:0}@media(max-width:760px){.topbar .identity{max-width:100%;gap:6px;flex-wrap:nowrap}.topbar .identity .window-switch{padding:7px 8px}.topbar .identity>.pill{display:inline-flex}}
+
+.cu-record-list [hidden]{display:none!important}.cu-record-filters{flex-wrap:wrap;margin:16px 0}.cu-record-list .record-main{min-width:0;overflow-wrap:anywhere}
+
+.cu-account-tools{display:flex;align-items:center;gap:16px;position:relative;flex-wrap:wrap}
+.cu-password summary{cursor:pointer;font-size:13px;color:#626b65;list-style:none;padding:10px 0;white-space:nowrap}
+.cu-password summary::-webkit-details-marker{display:none}
+.cu-password summary:hover{color:#202823;text-decoration:underline}
+.cu-password summary:focus-visible{outline:2px solid #536647;outline-offset:4px}
+.cu-password[open] summary{color:#202823}
+.cu-password form{position:absolute;right:0;top:100%;z-index:20;width:340px;max-width:calc(100vw - 40px);padding:20px;background:#f5f6ef;border:1px solid #aab3a6;box-shadow:0 8px 24px #20282326}
+.cu-password .field{margin:0 0 14px}.cu-password input{width:100%;min-width:0}.cu-password .btn{width:100%}
+@media(max-width:600px){.cu-account-tools{gap:12px}.cu-password summary{padding:14px 0}.cu-password form{left:0;right:auto}}
+
+.cu-order-status{display:inline-flex;align-items:center;padding:7px 14px;border:1px solid #b9c76f;border-radius:4px;background:#edf4bc;color:#354414;font-size:16px;font-weight:800}
+.cu-status-preparing,.cu-status-reviewing,.cu-status-confirmed{background:#e0edff;color:#174c89;border-color:#98bde8}
+.cu-status-submitted,.cu-status-needs_info{background:#fff0ce;color:#854600;border-color:#dfbc72}
+.cu-status-delivered,.cu-status-accepted{background:#d9f1e1;color:#176239;border-color:#8ec6a1}
+.cu-status-cancelled,.cu-status-closed{background:#e8eae8;color:#535c55;border-color:#bfc6bf}
+.cu-record-list .record{gap:14px;flex-wrap:wrap}.cu-record-list .record-main{flex:1 1 240px}
+[data-cu="chat"]:not(.cu-floating),.cu-record-chat{position:relative}.cu-unread{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:14px;height:14px;padding:0 3px;background:#c72e32;color:white;font:700 9px/1 sans-serif;border-radius:8px;margin-left:4px}.cu-unread[hidden]{display:none!important}.cu-floating .cu-unread{position:absolute;top:-5px;right:-5px;font-size:9px;line-height:1}
+
+.staff-order-unread{display:inline-flex;align-items:center;justify-content:center;vertical-align:top;margin-left:4px;box-sizing:border-box;min-width:14px;height:14px;padding:0 3px;background:#c72e32;color:#fff;border:1px solid white;border-radius:8px;font-size:9px;font-weight:700;cursor:pointer}.staff-order-unread:focus-visible{outline:2px solid #c72e32;outline-offset:3px}
+
+/* 工作台主标题紧凑排列，移除提示文字后不保留原有段落空白。 */
+.work-content > .section-top{align-items:flex-end;padding-bottom:12px;margin-bottom:16px;gap:12px}
+.work-content > .section-top .section-title{margin-bottom:0;line-height:1.25}
+.work-content > .section-top .eyebrow{margin-top:0;margin-bottom:8px}
+
+.workspace[data-workspace="service"] th{font-size:14px}
+
+.work-content > .section-top .workspace-summary{margin:8px 0 0;font-size:13px;line-height:1.5;color:#737b76}
+
+[data-order-panel][hidden]{display:none!important}
+
+.cu-record-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}.cu-record-heading .cu-order-status{font-size:13px;line-height:1.4;padding:3px 9px;white-space:nowrap}.cu-record-heading .pill{flex-shrink:0}
+
+/* 客户单据紧凑列表，不改变工作人员明细表及弹窗布局。 */
+.cu-record-list .record,[data-order-panel] > .record{padding:10px 14px;gap:8px 12px;margin:0;min-height:0}
+.cu-record-list .record-main h3,[data-order-panel] .record-main h3{font-size:15px;line-height:1.4;margin:0}
+.cu-record-list .record-main p,[data-order-panel] .record-main p{margin:3px 0 0;line-height:1.45;font-size:12px}
+.cu-record-list .record > .btn,[data-order-panel] > .record > .btn{min-height:32px;padding:6px 12px;font-size:12px}
+.cu-record-heading{gap:6px 8px}.cu-record-heading .cu-order-status{font-size:12px;padding:2px 7px}
+.cu-record-filters{margin:10px 0;gap:8px}
+#myProjectList .project-saved-item{padding:10px 0;gap:4px}
+#myProjectList .project-saved-item > .btn{justify-self:start;padding:5px 10px;min-height:30px}
+@media(max-width:600px){.cu-record-list .record > .btn,[data-order-panel] > .record > .btn{min-height:40px}}
+
+.cu-profile{position:relative}.topbar .identity .cu-profile-button{width:42px;height:42px;display:flex;align-items:center;justify-content:center;padding:8px;cursor:pointer}
+.cu-profile-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:100;min-width:130px;background:#f5f6ef;border:1px solid #aab3a6;box-shadow:0 6px 18px #0003;padding:5px}
+.cu-profile-menu[hidden]{display:none!important}.cu-profile-menu button{display:block;width:100%;text-align:left;padding:12px;color:#202823;background:transparent;border:0;cursor:pointer;white-space:nowrap}.cu-profile-menu button:hover{background:#e9ed93}
+.cu-password-dialog{width:min(420px,calc(100% - 24px));padding:0;border:1px solid #aab3a6;margin:auto;background:#f5f6ef}.cu-password-dialog::backdrop{background:#0005}.cu-password-dialog form{padding:20px}.cu-password-dialog .field{display:grid;gap:8px;margin:0 0 16px}.cu-password-dialog input{width:100%;padding:10px;border:1px solid #aab3a6}.cu-password-dialog h2{font-size:20px}
+
+#myProjectList .project-item-actions{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+#myProjectList .project-item-actions > .btn{padding:5px 10px;min-height:30px;white-space:nowrap}

@@ -1,0 +1,84 @@
+{
+  "name": "sany-forge-platform",
+  "productName": "三一匠造员工工作台",
+  "version": "3.7.3",
+  "private": true,
+  "description": "三一匠造 · Java/MySQL 设备销售客服订单交接与数据审核数字化平台",
+  "author": "SANY FORGE Coursework",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "node scripts/start-desktop.cjs",
+    "electron:install": "node node_modules/electron/install.js",
+    "web": "node server/java-platform.cjs",
+    "check": "node scripts/check.cjs",
+    "test": "node scripts/java-build.cjs test",
+    "test:api": "node --test --test-concurrency=1 java-server/qa/business-regression.cjs && node --test --test-concurrency=1 java-server/qa/services-regression.cjs && node --test --test-concurrency=1 java-server/qa/admin-regression.cjs",
+    "test:legacy": "node -e \"console.log('原 Node/SQLite 测试保留在 scripts/，仅供迁移参考，不作为 Java/MySQL 验收证据。')\"",
+    "java:build": "node scripts/java-build.cjs package",
+    "sync": "node scripts/sync-release.cjs",
+    "desktop:build": "npm run check && npm run test:desktop && npm run java:build && npm run test:workflow && npm run sync && node scripts/electron-build.cjs && node scripts/verify-release.cjs",
+    "test:workflow": "node --test --test-concurrency=1 java-server/qa/staff-workflow-v2-regression.cjs",
+    "installer:build": "node scripts/installer-build.cjs",
+    "test:desktop": "node --test scripts/request-id.test.cjs scripts/desktop-contract.test.cjs",
+    "test:browser": "node scripts/review-browser.cjs",
+    "test:packaged": "node scripts/verify-packaged.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.7.2",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "cn.sany.forge.service.java",
+    "asar": true,
+    "electronVersion": "44.7.2",
+    "directories": {
+      "output": "release/service-3.7.3"
+    },
+    "files": [
+      "server/platform.cjs",
+      "server/java-platform.cjs",
+      "desktop/main.cjs",
+      "desktop/service-address.cjs",
+      "desktop/icon.png",
+      "package.json",
+      "desktop/icon.ico"
+    ],
+    "extraResources": [
+      { "from": "dist", "to": "www", "filter": ["**/*"] },
+      { "from": "runtime/java", "to": "runtime/java", "filter": ["**/*"] },
+      { "from": "runtime/mysql-current", "to": "runtime/mysql", "filter": ["**/*"] },
+      { "from": "runtime/server/sany-forge-server.jar", "to": "runtime/server/sany-forge-server.jar" },
+      { "from": "runtime/installer", "to": "runtime/installer", "filter": ["**/*"] }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "desktop/icon.ico",
+      "signAndEditExecutable": true
+    },
+    "portable": {
+      "requestExecutionLevel": "user",
+      "useZip": true,
+      "artifactName": "三一匠造-${version}-员工工作台-Windows便携版.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "三一匠造员工工作台",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": ["zh_CN"],
+      "include": "installer/vc-runtime.nsh",
+      "artifactName": "三一匠造-${version}-员工工作台-Windows离线安装包.${ext}"
+    }
+  }
+}

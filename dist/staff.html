@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN" data-boot-theme="employee">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#202823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>三一匠造 · 客服订单与生产履约</title>
+  <link rel="icon" href="assets/brand/sany-logo-mono.svg">
+  <link rel="stylesheet" href="emblem-assembly.css">
+  <link rel="stylesheet" href="boot-screen.css">
+  <link rel="stylesheet" href="staff-app.css">
+</head>
+<body>
+  <a class="skip" href="#content">跳到主要内容</a>
+  <div id="app"><div class="loading">正在连接三一匠造…</div></div>
+  <dialog id="staffDialog"><div id="dialogBody"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="version.js"></script>
+  <script src="request-id.js"></script>
+  <script src="emblem-assembly.js"></script>
+  <script src="boot-screen.js"></script>
+  <script src="vendor/face-api.js"></script>
+  <script src="face-auth.js"></script>
+  <script src="staff-app.js"></script>
+</body>
+</html>
